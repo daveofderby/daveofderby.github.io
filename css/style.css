@@ -72,11 +72,11 @@ h1 {
 }
 
 h2 {
-  font-size: 38px;
+  font-size: 45px;
   color: #222222;
   font-family: "Raleway", sans-serif;
-  font-weight: normal;
-  margin: 0px 0 25px 0;
+  font-weight: bold;
+  margin: 25px 0;
   text-align: center;
   text-transform: uppercase;
 }
@@ -249,7 +249,7 @@ p {
 }
 
 .top_left_cont {
-  padding: 110px 0;
+  /* padding: 110px 0; */
 }
 
 .top_left_cont h3 {
@@ -260,14 +260,14 @@ p {
   font-weight: 700;
 }
 
-.top_left_cont h2 {
+/* .top_left_cont h2 {
   font-size: 40px;
   color: #fff;
   line-height: 52px;
   margin: 0 0 26px 0;
   font-family: "Raleway", sans-serif;
   text-align: center;
-}
+} */
 
 .top_left_cont h2 strong {
   font-weight: 700;
