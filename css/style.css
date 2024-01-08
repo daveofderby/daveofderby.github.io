@@ -7,7 +7,7 @@ Licence under Creative Commons Attribution 3.0
 @charset "utf-8";
 @import url(http://fonts.googleapis.com/css?family=Raleway:800,700,400);
 @import url(http://fonts.googleapis.com/css?family=Signika:400,600);
-@import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Agbalumo&display=swap");
 
 /* Reset
 ---------------------------------*/
@@ -65,7 +65,7 @@ body {
 h1 {
   font-size: 38px;
   color: #222222;
-  font-family: "Rubik Doodle Shadow", system-ui;
+  font-family: "Agbalumo", system-ui;
   font-weight: normal;
   margin: 0px;
   text-align: center;
