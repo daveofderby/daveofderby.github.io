@@ -108,7 +108,7 @@ p {
 
 #header_wrapper {
   background: #ffffff;
-  padding: 20px 0px;
+  padding: 10px 0px;
 }
 
 .header_box {
@@ -167,7 +167,7 @@ p {
 
 .navStyle ul li a {
   display: block;
-  font-size: 14px;
+  font-size: 18px;
   color: #222222;
   font-family: "Raleway", sans-serif;
   text-decoration: none;
@@ -227,8 +227,8 @@ p {
 .top_cont_outer {
   background: #3498db;
   position: relative;
-  background: url(../img/slide-1.jpg) top center no-repeat;
-  height: 650px;
+  background: url(../img/slide-2.jpg) center no-repeat;
+  height: 900px;
 }
 
 .hero_section {
@@ -316,71 +316,6 @@ a.read_more:hover {
   background: #fff;
   color: #3498db;
   border: 1px solid #3498db;
-}
-
-/* Services
----------------------------------*/
-
-#service {
-  padding: 60px 0px;
-  background: #fff;
-}
-
-.service_wrapper {
-  padding: 40px 0 40px;
-}
-
-.service_section {
-}
-
-.service_block {
-  text-align: center;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-left: 108px;
-  position: relative;
-}
-
-.service_icon {
-  width: 90px;
-  height: 85px;
-  margin: 0px auto 25px;
-  background: rgb(236, 236, 236);
-  position: absolute;
-  left: 0px;
-}
-
-.service_icon span {
-  background: transparent;
-  border-radius: 50%;
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-
-.service_icon i {
-  color: #3498db;
-  font-size: 40px;
-  margin-top: 0;
-  position: relative;
-  top: 20px;
-  z-index: 20;
-}
-
-.service_block h3 {
-  font-family: "Raleway", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: #111111;
-  margin: 35px 0 7px;
-  text-align: left;
-}
-
-.service_block p {
-  font-size: 16px;
-  color: #888888;
-  margin: 0px;
-  text-align: left;
 }
 
 /* Latest Work
@@ -654,7 +589,7 @@ img {
 /* About Us
 --------------------------- */
 .aboutUs-container {
-  background-image: url(../img/lap.png);
+  /* background-image: url(../img/lap.png); */
 }
 .aboutUs-container {
   background-repeat: no-repeat;
@@ -1700,7 +1635,7 @@ div.mc-image {
     font-size: 14px;
   }
   .top_cont_outer {
-    height: 335px;
+    height: 900px;
   }
   .hero_section {
     position: relative;
