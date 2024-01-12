@@ -225,9 +225,9 @@ p {
 ---------------------------------*/
 
 .top_cont_outer {
-  background: #3498db;
+  background: #5db59c;
   position: relative;
-  background: url(../img/slide-2.jpg) center no-repeat;
+  background: url(../img/slide-0.jpg) center no-repeat;
   height: 900px;
 }
 
@@ -271,7 +271,7 @@ p {
 
 .top_left_cont h2 strong {
   font-weight: 700;
-  color: #3498db;
+  color: #4f9c86;
 }
 
 .top_left_cont p {
