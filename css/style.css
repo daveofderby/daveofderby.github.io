@@ -51,7 +51,7 @@ a.nav-link:hover {
   position: relative;
   background: url(../img/slide-0.jpg) center no-repeat;
   background-size: cover;
-  height: 100vh;
+  /* height: 100vh; */
   padding-top: 6%;
 }
 
@@ -61,6 +61,7 @@ a.nav-link:hover {
   background: rgba(39, 143, 228, 0.303);
   padding: 16px 32px;
   margin: 0 200px;
+
 }
 
 /*
@@ -74,7 +75,7 @@ a.nav-link:hover {
     background-position-y: 150px;
   }
 }
-@media (max-width: 575px) {
+@media (max-width: 767px) {
   .aboutUs-container {
     background-image: none;
   }
@@ -99,8 +100,7 @@ a.nav-link:hover {
     font-size: 16px;
     color: #ffffff;
     background: rgba(39, 143, 228, 0.303);
-    padding: 10px 32px;
-    margin: 0;
+    padding: 10px 32px;  margin: 0px;
   }
 
   .avatar {
@@ -108,7 +108,7 @@ a.nav-link:hover {
   }
 
   h1 {
-    font-size: 28px;
+    font-size: 24px;
     color: #fff;
     line-height: 34px;
     margin: 0 0 9px 0;
