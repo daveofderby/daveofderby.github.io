@@ -734,7 +734,7 @@ img {
 
 .footer_bottom {
   border-top: 1px solid #3c3a3a;
-  padding: 25px 0;
+  padding: 15px 0;
 }
 
 .footer_bottom span {
@@ -1452,7 +1452,7 @@ div.mc-image {
     font-size: 30px;
   }
   .page_section.contact {
-    padding: 60px 0 50px;
+    padding: 20px 0 30px;
   }
   .navbar-inverse .navbar-toggle .icon-bar {
     background: #3498db;

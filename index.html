@@ -4,11 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, maximum-scale=1" />
     <title>Marubbi.com</title>
-    <link rel="icon" href="favicon.ico" type="image/ico" />
-    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="icon" href="icons/favicon.ico" type="image/ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="icons/android-chrome-192x192.png"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
@@ -19,23 +24,16 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="css/animate.css" rel="stylesheet" type="text/css" />
-
-    <!--[if lt IE 9]>
-      <script src="js/respond-1.1.0.min.js"></script>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/html5element.js"></script>
-    <![endif]-->
   </head>
   <body>
     <!--Header_section-->
-    <header id="header_wrapper">
+    <header id="header_section">
       <div class="container">
         <div class="header_box">
           <div class="logo">
             <a href="#">
-              <span style="color: red">Marubbi</span>.<span style="color: #5db59c"
-                >com</span
-              >
+              <span style="color: red">Marubbi</span
+              ><span style="color: #5db59c">.com</span>
             </a>
           </div>
           <nav class="navbar navbar-inverse" role="navigation">
@@ -85,10 +83,10 @@
                 </h1>
                 <div class="home_text">
                   <p>
-                    Life is a journey. And as we each follow our individual paths it is
+                    Life is a journey, and as we each follow our individual paths it is
                     important to occasionally look back in order to know where we need to
                     go next. As chapters end, new ones begin. Closure can often be sad,
-                    but it's always exciting moving forward. So here's to the next chapter
+                    but moving forward is always exciting. So here's to the next chapter
                     and the adventure it brings.
                   </p>
                   <p>
@@ -154,28 +152,28 @@
               </a>
             </li>
             <li>
-              <a class="" href="#" data-filter=".prototype">
-                <h5>Prototype</h5>
+              <a class="" href="#" data-filter=".employment">
+                <h5>Employment</h5>
               </a>
             </li>
             <li>
-              <a class="" href="#" data-filter=".design">
-                <h5>Design</h5>
+              <a class="" href="#" data-filter=".webapps">
+                <h5>Web Apps</h5>
               </a>
             </li>
             <li>
-              <a class="" href="#" data-filter=".android">
-                <h5>Android</h5>
+              <a class="" href="#" data-filter=".inside">
+                <h5>Inside</h5>
               </a>
             </li>
             <li>
-              <a class="" href="#" data-filter=".appleIOS">
-                <h5>Apple IOS</h5>
+              <a class="" href="#" data-filter=".outside">
+                <h5>Outside</h5>
               </a>
             </li>
             <li>
-              <a class="" href="#" data-filter=".web">
-                <h5>Web App</h5>
+              <a class="" href="#" data-filter=".other">
+                <h5>Other</h5>
               </a>
             </li>
           </ul>
@@ -198,14 +196,14 @@
               width: 337px;
               opacity: 1;
             "
-            class="portfolio-item one-four appleIOS isotope-item"
+            class="project-item one-four webapps isotope-item"
           >
-            <div class="portfolio_img">
-              <img src="img/portfolio_pic1.jpg" alt="Portfolio 1" />
+            <div class="project_img">
+              <img src="img/project_pic1.jpg" alt="Project Noodles" />
             </div>
             <div class="item_overlay">
-              <a href="img/portfolio_pic1.jpg" class="item_info fancybox">
-                <h4 class="project_name">SMS Mobile App</h4>
+              <a href="img/project_pic1.jpg" class="item_info fancybox">
+                <h4 class="project_name">Noodles</h4>
               </a>
             </div>
           </div>
@@ -391,29 +389,24 @@
         <section class="page_section contact" id="contact">
           <div class="contact_section">
             <h2>Contact Me</h2>
-            <div class="row">
-              <div class="col-lg-4"></div>
-              <div class="col-lg-4"></div>
-              <div class="col-lg-4"></div>
-            </div>
           </div>
           <div class="row">
             <div class="col-lg-4 wow fadeInLeft">
               <div class="contact_info">
                 <div class="detail">
-                  <h4>UNIQUE Infoway</h4>
-                  <p>104, Some street, NewYork, USA</p>
+                  <h4>Address</h4>
+                  <p>Derby, England, UK</p>
                 </div>
-                <div class="detail">
-                  <h4>call us</h4>
+                <!-- <div class="detail">
+                  <h4>Telephone</h4>
                   <p>+1 234 567890</p>
-                </div>
+                </div> -->
                 <div class="detail">
                   <h4>Email us</h4>
-                  <p>support@sitename.com</p>
+                  <p>dave@marubbi.com</p>
                 </div>
               </div>
-
+              <!-- 
               <ul class="social_links">
                 <li class="twitter animated bounceIn wow delay-02s">
                   <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
@@ -424,7 +417,7 @@
                 <li class="pinterest animated bounceIn wow delay-04s">
                   <a href="javascript:void(0)"><i class="fa fa-pinterest"></i></a>
                 </li>
-              </ul>
+              </ul> -->
             </div>
             <div class="col-lg-8 wow fadeInLeft delay-06s">
               <div class="form">
