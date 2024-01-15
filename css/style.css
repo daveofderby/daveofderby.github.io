@@ -811,17 +811,17 @@ img {
 
 /*new_profolio*/
 
-/* Portfolio */
+/* Project */
 
-.container.portfolio_title {
+.container.project_title {
   padding-bottom: 0px;
 }
 
-#portfolio {
+#project {
   padding: 60px 0 40px;
 }
 
-/* Portfolio Filters */
+/* Project Filters */
 
 #filters {
   margin-top: 10px;
@@ -886,9 +886,9 @@ img {
   text-align: center;
 }
 
-/* Portfolio Items */
+/* Project Items */
 
-#portfolio_wrapper {
+#project_wrapper {
   position: relative;
   padding: 0;
   width: 100%;
@@ -896,7 +896,7 @@ img {
   display: block;
 }
 
-#portfolio_wrapper .one-four {
+#project_wrapper .one-four {
   margin: 0 !important;
   line-height: 0;
   width: 25%;
@@ -904,24 +904,24 @@ img {
   position: relative;
 }
 
-.portfolio-item {
+.project-item {
   padding: 0;
   position: relative;
   overflow: hidden;
 }
 
-.portfolio-item .portfolio_img {
+.project-item .project_img {
   overflow: hidden;
   display: block;
   position: relative;
 }
 
-.portfolio-item .portfolio_img img {
+.project-item .project_img img {
   width: 100%;
   height: auto;
 }
 
-.portfolio-item:hover .item_overlay {
+.project-item:hover .item_overlay {
   opacity: 1;
   transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
@@ -956,6 +956,7 @@ img {
 }
 
 .item_info {
+  color: #fff;
   position: absolute;
   height: 100px;
   width: 100%;
@@ -968,7 +969,6 @@ img {
   color: #fff;
   text-transform: uppercase;
   margin-top: 25px;
-
   opacity: 0;
   font-size: 18px;
   transition: all 0.2s ease 0s;
@@ -980,13 +980,36 @@ img {
   z-index: 10;
 }
 
-.portfolio-item:hover .project_name {
+.project_info {
+  color: #fff;
+  opacity: 0;
+  font-size: 16px;
+  transition: all 0.2s ease 0s;
+  -moz-transition: all 0.2s ease 0s;
+  -webkit-transition: all 0.2s ease 0s;
+  -ms-transition: all 0.2s ease 0s;
+  -o-transition: all 0.2s ease 0s;
+  position: relative;
+  z-index: 10;
+}
+
+.project-item:hover .project_name {
   opacity: 1;
   -webkit-transition: opacity 0.1s 0.2s;
   -moz-transition: opacity 0.1s 0.2s;
   -ms-transition: opacity 0.1s 0.2s;
   -o-transition: opacity 0.1s 0.2s;
   transition: opacity 0.1s 0.2s;
+}
+
+.project-item:hover .project_info {
+  color: #fff;
+  opacity: 1;
+  -webkit-transition: opacity 0.3s 1s;
+  -moz-transition: opacity 0.3s 1s;
+  -ms-transition: opacity 0.3s 1s;
+  -o-transition: opacity 0.3s 1s;
+  transition: opacity 0.3s 1s;
 }
 
 .project_catg {
@@ -1001,7 +1024,7 @@ img {
   -o-transition: all 0.2s ease 0s;
 }
 
-.portfolio-item:hover .project_catg {
+.project-item:hover .project_catg {
   opacity: 0.8;
   -webkit-transition: opacity 0.1s 0.2s;
   -moz-transition: opacity 0.1s 0.2s;
@@ -1027,7 +1050,7 @@ img {
   -o-transition: all 0.3s ease 0.2s;
 }
 
-.portfolio-item:hover .zoom-icon {
+.project-item:hover .zoom-icon {
   opacity: 1;
   margin-top: 0px;
   -webkit-transition: opacity 0.3s 0.2s, margin-top 0.3s 0.2s;
@@ -1037,7 +1060,7 @@ img {
   transition: opacity 0.3s 0.2s, margin-top 0.3s 0.2s;
 }
 
-/* Portfolio Isotope Transitions */
+/* Project Isotope Transitions */
 
 .isotope,
 .isotope .isotope-item {
@@ -1074,7 +1097,7 @@ img {
   transition-duration: 0s;
 }
 
-/* Portfolio Expander */
+/* Project Expander */
 
 #project_container {
   display: none;
@@ -1145,7 +1168,7 @@ img {
   padding-bottom: 40px;
 }
 
-/* Portfolio*/
+/* Project*/
 
 .project-image-slider .bx-wrapper .bx-next {
   background: url("images/project_slider_right.png") no-repeat;
@@ -1178,7 +1201,7 @@ img {
   z-index: 100;
 }
 
-/* Portfolio Normal Expander */
+/* Project Normal Expander */
 
 .project-description {
   margin-top: 40px;
@@ -1208,7 +1231,7 @@ img {
   margin-bottom: 5px;
 }
 
-/* Portfolio FullScreen Expander */
+/* Project FullScreen Expander */
 
 #cycle-loader {
   height: 32px;
