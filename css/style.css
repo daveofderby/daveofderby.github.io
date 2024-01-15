@@ -28,15 +28,10 @@ h2 {
 }
 
 .logo {
-  float: left;
-  position: relative;
-  z-index: 2;
-  font-size: 32px;
-  color: #ffffff;
+  font-size: 2rem;
   font-family: "Agbalumo", system-ui;
-  font-weight: normal;
-  margin: 0px;
-  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 .logo a {
   text-decoration: none;
