@@ -28,13 +28,22 @@ h2 {
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-family: "Agbalumo", system-ui;
   margin: 0;
   padding: 0;
+  margin-top: -.5rem;
 }
 .logo a {
   text-decoration: none;
+}
+
+.navbar {
+  font-size: 1.4rem;
+}
+
+a.nav-link:hover {
+  color: red !important;
 }
 
 .home_wrapper {
@@ -43,7 +52,7 @@ h2 {
   background: url(../img/slide-0.jpg) center no-repeat;
   background-size: cover;
   height: 100vh;
-  padding-top: 100px;
+  padding-top: 6%;
 }
 
 .home_text {
@@ -65,18 +74,21 @@ h2 {
     background-position-y: 150px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .aboutUs-container {
     background-image: none;
   }
+
+  .logo {
+    margin: .0rem 0 .4rem 0;
+  }
+
   p {
     font-size: 14px;
   }
-  .top_cont_outer {
-    height: 900px;
-  }
+
   .home_wrapper {
-    padding-top: 30px;
+    padding-top: 22%;
   }
 
   .home_section {
