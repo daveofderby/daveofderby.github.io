@@ -66,7 +66,7 @@ h1 {
 }
 
 h1 strong {
-  color: rgb(230, 24, 24)
+  color: rgb(230, 24, 24);
 }
 
 h2 {
@@ -514,7 +514,6 @@ img {
 .about-us-link a:first-child {
   margin-left: 0;
 }
-
 
 #aboutUs {
   padding: 60px 0;
@@ -1376,7 +1375,6 @@ div.mc-image {
     height: 900px;
   }
   .home_wrapper {
-
     padding-top: 30px;
   }
 
@@ -1390,6 +1388,10 @@ div.mc-image {
     background: rgba(39, 143, 228, 0.303);
     padding: 16px 32px;
     margin-bottom: 10px;
+  }
+
+  .avatar {
+    width: 200px;
   }
 
   .top_left_cont {
