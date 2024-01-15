@@ -60,7 +60,7 @@ a.nav-link:hover {
   color: #ffffff;
   background: rgba(39, 143, 228, 0.303);
   padding: 16px 32px;
-  margin-bottom: 10px;
+  margin: 0 200px;
 }
 
 /*
@@ -100,7 +100,7 @@ a.nav-link:hover {
     color: #ffffff;
     background: rgba(39, 143, 228, 0.303);
     padding: 16px 32px;
-    margin-bottom: 10px;
+    margin: 0;
   }
 
   .avatar {
