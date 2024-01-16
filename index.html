@@ -31,7 +31,6 @@
     <link href="css/animate.css" rel="stylesheet" type="text/css" />
 
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    
   </head>
   <body>
     <!--Header_section-->
@@ -54,7 +53,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto ">
+            <div class="navbar-nav ms-auto">
               <a class="nav-link" aria-current="page" href="#home">Home</a>
               <a class="nav-link" href="#about">About Me</a>
               <a class="nav-link" href="#projects">Projects</a>
@@ -62,43 +61,19 @@
           </div>
         </div>
       </nav>
-      <!-- <nav class="navbar navbar-inverse" role="navigation">
-            <div class="navbar-header">
-              <button
-                type="button"
-                id="nav-toggle"
-                class="navbar-toggle"
-                data-toggle="collapse"
-                data-target="#main-nav"
-              >
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span> <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
-            <div id="main-nav" class="collapse navbar-collapse navStyle">
-              <ul class="nav navbar-nav" id="mainNav">
-                <li class="active">
-                  <a href="#home" class="scroll-link">Home</a>
-                </li>
-                <li><a href="#about" class="scroll-link">About</a></li>
-                <li><a href="#projects" class="scroll-link">Projects</a></li>
-              </ul>
-            </div>
-          </nav> -->
     </header>
     <!--Header_section-->
 
     <!--Home_Section-->
     <section id="home">
       <div class="home_wrapper">
-        <div class="container ">
+        <div class="container-md">
           <div class="row">
             <div class="col-12">
               <div class="zoomIn wow animated">
                 <h1>
-                  Analyst, Developer, Creator, Problem Solver,<br />
-                  Teacher, Father, Handyman <strong class="">and much more...</strong>
+                  Analyst, Developer, Creator, Problem&nbspSolver, Teacher, Father,
+                  Handyman <br /><strong class="green">and much more...</strong>
                   <br /><img
                     class="avatar"
                     src="img\dave300.png"
@@ -117,10 +92,13 @@
                     Welcome to my webpage which I use as a launch pad for each of my many
                     projects.
                   </p>
-                  <p class="text-center"><a href="#contact" role="button" class="btn btn-primary">
-                    Contact Me
-                  </a></p>
-                </div><br>
+                  <p class="text-center">
+                    <a href="#contact" role="button" class="btn btn-primary">
+                      Contact Me
+                    </a>
+                  </p>
+                </div>
+                <br />
               </div>
             </div>
           </div>
@@ -130,28 +108,23 @@
     <!--Home_Section-->
 
     <!--About Section-->
-    <section id="about">
+    <section id="about" class="about">
       <div class="fadeInLeft animated wow">
         <div class="container">
           <h2>About Me</h2>
           <div class="row">
             <div class="col-lg-12 about-us">
               <h3>A brief outline of 30+ years experience</h3>
-              <p>
-                Jobs, projects, locations, companies, it all soon adds up. <br />
-                <br />
-                Project Manager/Officer/Consultant
-              </p>
+              <p>Jobs, projects, locations, companies, it all soon adds up. <br /></p>
               <ul class="about-us-list">
+                <li class="points">Project Manager/Co-ordinator/Consultant</li>
                 <li class="points">Secondary School Teacher</li>
-                <li class="points">Project Manager/Officer/Consultant</li>
-                <li class="points">Network Manager / Administrator</li>
-                <li class="points">Handy Man</li>
-                <li class="points">System Developer / Designer</li>
+                <li class="points">Network Manager</li>
+                <li class="points">Systems Administrator</li>
+                <li class="points">Website & Webapp Developer</li>
+                <li class="points">Handyman</li>
+                <li class="points">Gardener</li>
               </ul>
-              <div class="about-us-link">
-                <a href="#" class="read_more">Read More</a>
-              </div>
             </div>
           </div>
         </div>
@@ -163,255 +136,42 @@
     <section id="projects" class="content">
       <h2>Projects</h2>
 
-      <!-- Project Filters -->
-      <div class="projects">
-        <div id="filters" class="sixteen columns">
-          <ul class="clearfix">
-            <li>
-              <a id="all" href="#" data-filter="*" class="active">
-                <h5>All</h5>
-              </a>
-            </li>
-            <li>
-              <a class="" href="#" data-filter=".employment">
-                <h5>Employment</h5>
-              </a>
-            </li>
-            <li>
-              <a class="" href="#" data-filter=".webapps">
-                <h5>Web Apps</h5>
-              </a>
-            </li>
-            <li>
-              <a class="" href="#" data-filter=".inside">
-                <h5>Inside</h5>
-              </a>
-            </li>
-            <li>
-              <a class="" href="#" data-filter=".outside">
-                <h5>Outside</h5>
-              </a>
-            </li>
-            <li>
-              <a class="" href="#" data-filter=".other">
-                <h5>Other</h5>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!--/Projects Filters -->
-
-        <!-- Projects Wrapper -->
+      <div
+        class="isotope fadeInLeft animated wow"
+        style="position: relative; overflow: hidden; height: 480px"
+        id="projects_wrapper"
+      >
+        <!-- Project Item -->
         <div
-          class="isotope fadeInLeft animated wow"
-          style="position: relative; overflow: hidden; height: 480px"
-          id="projects_wrapper"
+          style="
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
+            width: 337px;
+            opacity: 1;
+          "
+          class="project-item one-four webapps isotope-item"
         >
-          <!-- Project Item -->
-          <div
-            style="
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);
-              width: 337px;
-              opacity: 1;
-            "
-            class="project-item one-four webapps isotope-item"
-          >
-            <div class="project_img">
-              <img src="img/project_noodles.jpg" alt="Project Noodles" />
-            </div>
-            <div class="item_overlay">
-              <a href="https:\\noodles.marubbi.com" class="item_info fancybox">
-                <h4 class="project_name">
-                  &lt;🍜&gt; Instant<span
-                    style="text-decoration: line-through; opacity: 0.5"
-                    >iated</span
-                  >
-                  Noodles
-                </h4>
-                <h5 class="project_info">
-                  A web app based on Colt Steels Bootcamp Course
-                </h5>
-              </a>
-            </div>
+          <div class="project_img">
+            <img src="img/project_noodles.jpg" alt="Project Noodles" />
           </div>
-          <!--/Project Item -->
-
-          <!-- Project Item-->
-          <div
-            style="
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              transform: translate3d(337px, 0px, 0px) scale3d(1, 1, 1);
-              width: 337px;
-              opacity: 1;
-            "
-            class="portfolio-item one-four design isotope-item"
-          >
-            <div class="project_img">
-              <img src="img/portfolio_pic1.jpg" alt="Portfolio 1" />
-            </div>
-            <div class="item_overlay">
-              <a href="img/portfolio_pic1.jpg" class="item_info fancybox">
-                <h4 class="project_name">Finance App</h4>
-              </a>
-            </div>
+          <div class="item_overlay">
+            <a href="https:\\noodles.marubbi.com" class="item_info fancybox">
+              <h4 class="project_name">
+                &lt;🍜&gt; Instant<span
+                  style="text-decoration: line-through; opacity: 0.5"
+                  >iated</span
+                >
+                Noodles
+              </h4>
+              <h5 class="project_info">A web app based on Colt Steels Bootcamp Course</h5>
+            </a>
           </div>
-          <!--/Portfolio Item -->
-
-          <!-- Portfolio Item -->
-          <div
-            style="
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              transform: translate3d(674px, 0px, 0px) scale3d(1, 1, 1);
-              width: 337px;
-              opacity: 1;
-            "
-            class="portfolio-item one-four design isotope-item"
-          >
-            <div class="portfolio_img">
-              <img src="img/portfolio_pic1.jpg" alt="Portfolio 1" />
-            </div>
-            <div class="item_overlay">
-              <a href="img/portfolio_pic1.jpg" class="item_info fancybox">
-                <h4 class="project_name">GPS Concept</h4>
-              </a>
-            </div>
-          </div>
-          <!--/Portfolio Item-->
-
-          <!-- Portfolio Item-->
-          <div
-            style="
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              transform: translate3d(1011px, 0px, 0px) scale3d(1, 1, 1);
-              width: 337px;
-              opacity: 1;
-            "
-            class="portfolio-item one-four android prototype web isotope-item"
-          >
-            <div class="portfolio_img">
-              <img src="img/portfolio_pic1.jpg" alt="Portfolio 1" />
-            </div>
-            <div class="item_overlay">
-              <a href="img/portfolio_pic1.jpg" class="item_info fancybox">
-                <h4 class="project_name">Shopping</h4>
-              </a>
-            </div>
-          </div>
-          <!-- Portfolio Item -->
-
-          <!-- Portfolio Item -->
-          <div
-            style="
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              transform: translate3d(0px, 240px, 0px) scale3d(1, 1, 1);
-              width: 337px;
-              opacity: 1;
-            "
-            class="portfolio-item one-four design isotope-item"
-          >
-            <div class="portfolio_img">
-              <img src="img/portfolio_pic1.jpg" alt="Portfolio 1" />
-            </div>
-            <div class="item_overlay">
-              <a href="img/portfolio_pic1.jpg" class="item_info fancybox">
-                <h4 class="project_name">Managment</h4>
-              </a>
-            </div>
-          </div>
-          <!--/Portfolio Item -->
-
-          <!-- Portfolio Item -->
-          <div
-            style="
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              transform: translate3d(337px, 240px, 0px) scale3d(1, 1, 1);
-              width: 337px;
-              opacity: 1;
-            "
-            class="portfolio-item one-four web isotope-item"
-          >
-            <div class="portfolio_img">
-              <img src="img/portfolio_pic1.jpg" alt="Portfolio 1" />
-            </div>
-            <div class="item_overlay">
-              <a href="img/portfolio_pic1.jpg" class="item_info fancybox">
-                <h4 class="project_name">iPhone</h4>
-              </a>
-            </div>
-          </div>
-          <!--/Portfolio Item -->
-
-          <!-- Portfolio Item  -->
-          <div
-            style="
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              transform: translate3d(674px, 240px, 0px) scale3d(1, 1, 1);
-              width: 337px;
-              opacity: 1;
-            "
-            class="portfolio-item one-four design web isotope-item"
-          >
-            <div class="portfolio_img">
-              <img src="img/portfolio_pic1.jpg" alt="Portfolio 1" />
-            </div>
-            <div class="item_overlay">
-              <a href="img/portfolio_pic1.jpg" class="item_info fancybox">
-                <h4 class="project_name">Nexus Phone</h4>
-              </a>
-            </div>
-          </div>
-          <!--/Portfolio Item -->
-
-          <!-- Portfolio Item -->
-          <div
-            style="
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              transform: translate3d(1011px, 240px, 0px) scale3d(1, 1, 1);
-              width: 337px;
-              opacity: 1;
-            "
-            class="portfolio-item one-four android isotope-item"
-          >
-            <div class="portfolio_img">
-              <img src="img/portfolio_pic1.jpg" alt="Portfolio 1" />
-            </div>
-            <div class="item_overlay">
-              <a href="img/portfolio_pic1.jpg" class="item_info fancybox">
-                <h4 class="project_name">Android</h4>
-              </a>
-            </div>
-          </div>
-          <!--/Portfolio Item -->
         </div>
-        <!--/Portfolio Wrapper -->
-      </div>
-      <!--/Portfolio Filters -->
-
-      <div class="portfolio_btm"></div>
-
-      <div id="project_container">
-        <div class="clear"></div>
-        <div id="project_data"></div>
       </div>
     </section>
-    <!--/Portfolio -->
+    <!--/Projects -->
 
     <!--Footer-->
     <footer class="footer_wrapper" id="contact">

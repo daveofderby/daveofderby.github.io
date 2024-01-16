@@ -17,7 +17,7 @@ h2 {
   color: #222222;
   font-family: "Raleway", sans-serif;
   font-weight: bold;
-  margin: 25px 0;
+  padding: 25px 0;
   text-align: center;
   text-transform: uppercase;
 }
@@ -32,7 +32,7 @@ h2 {
   font-family: "Agbalumo", system-ui;
   margin: 0;
   padding: 0;
-  margin-top: -.5rem;
+  margin-top: -0.5rem;
 }
 .logo a {
   text-decoration: none;
@@ -44,6 +44,10 @@ h2 {
 
 a.nav-link:hover {
   color: red !important;
+}
+
+.green {
+  color: #5db59c;
 }
 
 .home_wrapper {
@@ -58,30 +62,55 @@ a.nav-link:hover {
 .home_text {
   font-size: 22px;
   color: #ffffff;
-  background: rgba(39, 143, 228, 0.303);
+  background: rgba(39, 143, 228, 0.473);
   padding: 16px 32px;
   margin: 0 200px;
-
 }
 
+.about {
+  background: rgba(98, 238, 203, 0.473);
+}
 /*
    Media Queries
 --------------------------- */
-@media (min-width: 768px) and (max-width: 1200px) {
+@media (min-width: 577px) and (max-width: 1200px) {
   .aboutUs-container {
     background-repeat: no-repeat;
     background-position: right;
     background-size: auto 59%;
     background-position-y: 150px;
   }
-}
-@media (max-width: 767px) {
-  .aboutUs-container {
-    background-image: none;
+
+  h1 {
+    font-size: 28px;
+    color: #fff;
+    line-height: 32px;
+    margin: 0 0 9px 0;
+  }
+  .home_wrapper {
+    padding-top: 12%;
   }
 
+  .home_section {
+    position: relative;
+    padding-top: 10px;
+  }
+  .home_text {
+    font-size: 16px;
+    color: #ffffff;
+    background: rgba(39, 143, 228, 0.303);
+    padding: 10px 32px;
+    margin: 0px;
+  }
+
+  .avatar {
+    width: 150px;
+  }
+}
+
+@media (max-width: 576px) {
   .logo {
-    margin: .0rem 0 .4rem 0;
+    margin: 0rem 0 0.4rem 0;
   }
 
   p {
@@ -100,11 +129,12 @@ a.nav-link:hover {
     font-size: 16px;
     color: #ffffff;
     background: rgba(39, 143, 228, 0.303);
-    padding: 10px 32px;  margin: 0px;
+    padding: 10px 32px;
+    margin: 0px;
   }
 
   .avatar {
-    width: 200px;
+    width: 150px;
   }
 
   h1 {
