@@ -13,11 +13,10 @@ h1 {
 }
 
 h2 {
-  font-size: 45px;
-  color: #222222;
+  font-size: 32px;
   font-family: "Raleway", sans-serif;
   font-weight: bold;
-  padding: 25px 0;
+  padding-top: .5rem;
   text-align: center;
   text-transform: uppercase;
 }
@@ -67,8 +66,30 @@ a.nav-link:hover {
   margin: 0 200px;
 }
 
-.about {
-  background: rgba(98, 238, 203, 0.473);
+#about {
+  background: rgba(98, 238, 203, 1);
+}
+
+#projects {
+  background: rgba(245, 3, 3, 1);
+  color: #ffffff;
+}
+
+.card {
+  color: #000000;
+  margin-bottom: 1rem;
+}
+.card-title {
+  font-family: "Raleway", system-ui;
+  font-size: 2rem;
+  font-weight: 900;
+  padding-top: .5rem;
+}
+
+#footer {
+  background: rgba(22, 22, 22, 0.856);
+  color: #ffffff;
+  padding-top: 1rem;
 }
 /*
    Media Queries
@@ -144,6 +165,10 @@ a.nav-link:hover {
     margin: 0 0 9px 0;
   }
 
+  .card-title {
+    font-size: 1.2rem;
+  }
+
   #aboutUs img {
     margin-bottom: 20px;
   }
@@ -159,9 +184,8 @@ a.nav-link:hover {
     margin: 0px;
     margin-bottom: 20px;
   }
-  #filters ul {
-    padding-left: 0px;
-  }
+
+
   .form {
     margin: 0 18px;
   }
