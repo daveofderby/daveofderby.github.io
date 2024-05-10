@@ -94,7 +94,7 @@ a.nav-link:hover {
 /*
    Media Queries
 --------------------------- */
-@media (min-width: 577px) and (max-width: 1200px) {
+/* @media (min-width: 577px) and (max-width: 1200px) {
   .aboutUs-container {
     background-repeat: no-repeat;
     background-position: right;
@@ -119,7 +119,6 @@ a.nav-link:hover {
   .home_text {
     font-size: 16px;
     color: #ffffff;
-    background: rgba(39, 143, 228, 0.303);
     padding: 10px 32px;
     margin: 0px;
   }
@@ -127,7 +126,7 @@ a.nav-link:hover {
   .avatar {
     width: 150px;
   }
-}
+} */
 
 @media (max-width: 576px) {
   .logo {
@@ -135,7 +134,7 @@ a.nav-link:hover {
   }
 
   p {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .home_wrapper {
@@ -147,9 +146,8 @@ a.nav-link:hover {
     padding-top: 10px;
   }
   .home_text {
-    font-size: 16px;
+    font-size: 22px;
     color: #ffffff;
-    background: rgba(39, 143, 228, 0.303);
     padding: 10px 32px;
     margin: 0px;
   }
