@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Agbalumo&display=swap");
 
 h1 {
-  font-size: 45px;
+  font-size: 52px;
   color: #ffffff;
   font-family: "Raleway", system-ui;
   font-weight: normal;
@@ -54,19 +54,19 @@ a.nav-link:hover {
   position: relative;
   background: url(../img/slide-0.jpg) center no-repeat;
   background-size: cover;
-  /* height: 100vh; */
+  height: 100vh; 
   padding-top: 6%;
 }
 
 .home_text {
   font-size: 22px;
   color: #ffffff;
-  background: rgba(39, 143, 228, 0.473);
+  background: rgba(30, 115, 184, 0.7);
   padding: 16px 32px;
   margin: 0 200px;
 }
 
-#about {
+#workhistory {
   background: rgba(98, 238, 203, 1);
 }
 
