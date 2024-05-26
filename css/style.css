@@ -8,7 +8,7 @@ h1 {
   color: #ffffff;
   font-family: "Raleway", system-ui;
   font-weight: normal;
-  margin-top: 20px;
+  margin-top: 5%;
   text-align: center;
 }
 
@@ -63,15 +63,17 @@ a.nav-link:hover {
   color: #ffffff;
   background: rgba(30, 115, 184, 0.7);
   padding: 16px 32px;
-  margin: 0 200px;
+  margin: 0 7%;
 }
 
 #workhistory {
   background: rgba(98, 238, 203, 1);
+  padding-top: 6%;
 }
 
 #projects {
   background: rgba(245, 3, 3, 1);
+  padding-top: 6%;
   color: #ffffff;
 }
 
@@ -128,6 +130,13 @@ a.nav-link:hover {
   }
 } */
 
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 42px;
+    line-height: 58px;
+  }
+}
+
 @media (max-width: 576px) {
   .logo {
     margin: 0rem 0 0.4rem 0;
@@ -153,13 +162,13 @@ a.nav-link:hover {
   }
 
   .avatar {
-    width: 150px;
+    width: 230px;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 32px;
     color: #fff;
-    line-height: 34px;
+    line-height: 42px;
     margin: 0 0 9px 0;
   }
 
