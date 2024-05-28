@@ -3,12 +3,45 @@
 @import url(https://fonts.googleapis.com/css?family=Signika:400,600);
 @import url("https://fonts.googleapis.com/css2?family=Agbalumo&display=swap");
 
+#header_section {
+  position: fixed;
+  z-index: 1000;
+}
+
+#home_section {
+  position: relative;
+  top: 65px;
+  background: url(../img/slide-0.jpg) center no-repeat;
+  background-size: cover;
+
+  /* padding-top: 80px; */
+  padding-bottom: 30px;
+}
+
+.home_wrapper {
+  background: #7e89fb;
+}
+
+#workhistory_section {
+  background: rgba(98, 238, 203, 1);
+  padding-top: 80px;
+  padding-bottom: 30px;
+}
+
+#projects_section {
+  background: rgba(245, 3, 3, 1);
+  padding-top: 80px;
+  padding-bottom: 30px;
+  color: #ffffff;
+}
+
+
 h1 {
-  font-size: 52px;
+  font-size: 62px;
+  line-height: 72px;
   color: #ffffff;
   font-family: "Raleway", system-ui;
   font-weight: normal;
-  margin-top: 5%;
   text-align: center;
 }
 
@@ -16,14 +49,8 @@ h2 {
   font-size: 32px;
   font-family: "Raleway", sans-serif;
   font-weight: bold;
-  padding-top: .5rem;
   text-align: center;
   text-transform: uppercase;
-}
-
-#header_section {
-  position: fixed;
-  z-index: 1000;
 }
 
 .logo {
@@ -49,33 +76,14 @@ a.nav-link:hover {
   color: #5db59c;
 }
 
-.home_wrapper {
-  background: #5db59c;
-  position: relative;
-  background: url(../img/slide-0.jpg) center no-repeat;
-  background-size: cover;
-  height: 100vh; 
-  padding-top: 6%;
-}
-
 .home_text {
   font-size: 22px;
   color: #ffffff;
   background: rgba(30, 115, 184, 0.7);
   padding: 16px 32px;
-  margin: 0 7%;
+  margin: 0 30px;
 }
 
-#workhistory {
-  background: rgba(98, 238, 203, 1);
-  padding-top: 6%;
-}
-
-#projects {
-  background: rgba(245, 3, 3, 1);
-  padding-top: 6%;
-  color: #ffffff;
-}
 
 .card {
   color: #000000;
@@ -96,48 +104,34 @@ a.nav-link:hover {
 /*
    Media Queries
 --------------------------- */
-/* @media (min-width: 577px) and (max-width: 1200px) {
-  .aboutUs-container {
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: auto 59%;
-    background-position-y: 150px;
-  }
-
-  h1 {
-    font-size: 28px;
-    color: #fff;
-    line-height: 32px;
-    margin: 0 0 9px 0;
-  }
-  .home_wrapper {
-    padding-top: 12%;
-  }
-
-  .home_section {
-    position: relative;
-    padding-top: 10px;
-  }
-  .home_text {
-    font-size: 16px;
-    color: #ffffff;
-    padding: 10px 32px;
-    margin: 0px;
-  }
-
-  .avatar {
-    width: 150px;
-  }
-} */
 
 @media (max-width: 1200px) {
   h1 {
+    font-size: 52px;
+    line-height: 62px;
+  }
+}
+
+@media (max-width: 992px) {
+  h1 {
     font-size: 42px;
-    line-height: 58px;
+    line-height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+    line-height: 42px;
   }
 }
 
 @media (max-width: 576px) {
+  h1 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
   .logo {
     margin: 0rem 0 0.4rem 0;
   }
@@ -146,17 +140,9 @@ a.nav-link:hover {
     font-size: 18px;
   }
 
-  .home_wrapper {
-    padding-top: 22%;
-  }
-
-  .home_section {
-    position: relative;
-    padding-top: 10px;
-  }
   .home_text {
     font-size: 22px;
-    color: #ffffff;
+    colosr: #ffffff;
     padding: 10px 32px;
     margin: 0px;
   }
@@ -165,12 +151,7 @@ a.nav-link:hover {
     width: 230px;
   }
 
-  h1 {
-    font-size: 32px;
-    color: #fff;
-    line-height: 42px;
-    margin: 0 0 9px 0;
-  }
+
 
   .card-title {
     font-size: 1.2rem;
