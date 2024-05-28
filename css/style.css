@@ -37,6 +37,7 @@
 
 
 h1 {
+  padding: 1rem 0;
   font-size: 62px;
   line-height: 72px;
   color: #ffffff;
@@ -76,6 +77,10 @@ a.nav-link:hover {
   color: #5db59c;
 }
 
+.avatar {
+  height: 25vh;
+}
+
 .home_text {
   font-size: 22px;
   color: #ffffff;
@@ -99,7 +104,8 @@ a.nav-link:hover {
 #footer {
   background: rgba(22, 22, 22, 0.856);
   color: #ffffff;
-  padding-top: 1rem;
+  padding: 0.7rem;
+  text-align: center;
 }
 /*
    Media Queries
@@ -147,12 +153,6 @@ a.nav-link:hover {
     margin: 0px;
   }
 
-  .avatar {
-    width: 230px;
-  }
-
-
-
   .card-title {
     font-size: 1.2rem;
   }
@@ -181,21 +181,6 @@ a.nav-link:hover {
     padding: 40px 0;
   }
   
-  #clients {
-    padding: 40px 0;
-  }
-  .client_logos ul li {
-    display: inline;
-    margin: 0 25px;
-    padding: 11px 0;
-    display: inline-block;
-  }
-  .social_links li {
-    float: left;
-  }
-  .contact_section {
-    margin: 0;
-  }
   h2,
   .contact_section h2 {
     font-size: 30px;
@@ -228,10 +213,5 @@ a.nav-link:hover {
   .navbar-inverse .navbar-nav > li > a {
     color: #222;
     background: #f9f9f9;
-  }
-}
-@media (max-width: 480px) {
-  .team_area {
-    width: 99%;
   }
 }
