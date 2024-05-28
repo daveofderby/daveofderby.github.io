@@ -11,24 +11,45 @@
 #home_section {
   background: url(../img/slide-0.jpg) center no-repeat;
   background-size: cover;
-  padding-top:70px;
+  padding-top: 70px;
   padding-bottom: 30px;
 }
 
 
 #workhistory_section {
   background: rgba(98, 238, 203, 1);
-  padding:20px 0;
+  padding: 20px 0;
   scroll-margin-top: 65px;
 }
 
 #projects_section {
   background: rgba(245, 3, 3, 1);
   color: #ffffff;
-  padding:30px 0;
+  padding: 30px 0;
   scroll-margin-top: 65px;
 }
 
+#projects_page {
+  background: rgba(245, 3, 3, 1);
+  color: #ffffff;
+  padding: 70px 0;
+  scroll-margin-top: 65px;
+}
+
+#projects_page a {
+  font-weight: 900;
+  font-style: normal;
+}
+
+#projects_page .col {
+  align-content:center;
+}
+
+
+
+p {
+  font-size: 20px;
+}
 
 h1 {
   padding: 1rem 0;
@@ -45,7 +66,7 @@ h2 {
   font-family: "Raleway", sans-serif;
   font-weight: bold;
   text-align: center;
-  text-transform: uppercase;
+  padding: .3rem 0;
 }
 
 .logo {
@@ -55,6 +76,7 @@ h2 {
   padding: 0;
   margin-top: -0.5rem;
 }
+
 .logo a {
   text-decoration: none;
 }
@@ -88,6 +110,7 @@ a.nav-link:hover {
   color: #000000;
   margin-bottom: 1rem;
 }
+
 .card-title {
   font-family: "Raleway", system-ui;
   font-size: 2rem;
@@ -101,6 +124,7 @@ a.nav-link:hover {
   padding: 0.7rem;
   text-align: center;
 }
+
 /*
    Media Queries
 --------------------------- */
@@ -132,6 +156,10 @@ a.nav-link:hover {
     line-height: 38px;
   }
 
+  h2 {
+    font-size: 22px;
+  }
+
   .logo {
     margin: 0rem 0 0.4rem 0;
   }
@@ -154,13 +182,16 @@ a.nav-link:hover {
   #aboutUs img {
     margin-bottom: 20px;
   }
+
   #aboutUs h3 {
     font-size: 26px;
     line-height: 22px;
   }
+
   .service_block h3 {
     font-size: 16px;
   }
+
   service_block p {
     font-size: 14px;
     margin: 0px;
@@ -171,40 +202,45 @@ a.nav-link:hover {
   .form {
     margin: 0 18px;
   }
+
   .page_section.team {
     padding: 40px 0;
   }
-  
-  h2,
-  .contact_section h2 {
-    font-size: 30px;
-  }
+
+
   .page_section.contact {
     padding: 20px 0 30px;
   }
+
   .navbar-inverse .navbar-toggle .icon-bar {
     background: #3498db;
   }
+
   .navbar-inverse .navbar-toggle {
     border-color: transparent;
   }
+
   .navbar-inverse .navbar-toggle:hover,
   .navbar-inverse .navbar-toggle:focus {
     background: none;
     outline: none;
   }
+
   .navStyle ul li {
     display: block;
   }
+
   .navStyle {
     float: right;
     width: 100%;
     text-align: center;
   }
+
   .navStyle ul li:last-child {
     margin: 0px;
   }
-  .navbar-inverse .navbar-nav > li > a {
+
+  .navbar-inverse .navbar-nav>li>a {
     color: #222;
     background: #f9f9f9;
   }
