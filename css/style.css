@@ -9,30 +9,24 @@
 }
 
 #home_section {
-  position: relative;
-  top: 65px;
   background: url(../img/slide-0.jpg) center no-repeat;
   background-size: cover;
-
-  /* padding-top: 80px; */
+  padding-top:70px;
   padding-bottom: 30px;
 }
 
-.home_wrapper {
-  background: #7e89fb;
-}
 
 #workhistory_section {
   background: rgba(98, 238, 203, 1);
-  padding-top: 80px;
-  padding-bottom: 30px;
+  padding:20px 0;
+  scroll-margin-top: 65px;
 }
 
 #projects_section {
   background: rgba(245, 3, 3, 1);
-  padding-top: 80px;
-  padding-bottom: 30px;
   color: #ffffff;
+  padding:20px 0;
+  scroll-margin-top: 65px;
 }
 
 
@@ -82,7 +76,7 @@ a.nav-link:hover {
 }
 
 .home_text {
-  font-size: 22px;
+  font-size: 26px;
   color: #ffffff;
   background: rgba(30, 115, 184, 0.7);
   padding: 16px 32px;
@@ -149,7 +143,7 @@ a.nav-link:hover {
   .home_text {
     font-size: 22px;
     colosr: #ffffff;
-    padding: 10px 32px;
+    padding: 10px 16px;
     margin: 0px;
   }
 
