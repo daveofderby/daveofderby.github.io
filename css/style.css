@@ -12,7 +12,7 @@
   background: url(../img/slide-0.jpg) center no-repeat;
   background-size: cover;
   padding-top: 70px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 
@@ -94,7 +94,7 @@ a.nav-link:hover {
 }
 
 .avatar {
-  height: 25vh;
+  height: 30vh;
 }
 
 .home_text {
