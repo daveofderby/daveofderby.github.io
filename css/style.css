@@ -41,10 +41,22 @@
   font-style: normal;
 }
 
+#projects_page h2 {
+  text-align: left;
+}
+
+#projects_page .row {
+  padding-bottom: 1rem;
+}
+
+#projects_page img {
+  padding: 5px;
+}
+
+
 #projects_page .col {
   align-content:center;
 }
-
 
 
 p {
