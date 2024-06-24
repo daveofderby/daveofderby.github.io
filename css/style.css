@@ -82,25 +82,21 @@ h2 {
 }
 
 h3 {
-  font-size: 22px;
+  font-size: 20px;
   font-family: "Raleway", sans-serif;
   font-weight: bold;
-  text-align: right;
+  text-align: center;
   padding: .3rem 0;
+  background-color: #000000;
 }
 
 .pagetext {
   font-size: 16px;
-  text-align: right;
+  text-align: left;
 }
 
 .spl-footer {
   font-size: 20px;
-}
-
-
-.thumbnail {
-  height: 26vh;
 }
 
 .logo {
