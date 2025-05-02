@@ -1,77 +1,127 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1" />
+    <title>Marubbi.com</title>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-0TTP3BXXFD"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, maximum-scale=1" />
-  <title>Marubbi.com</title>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0TTP3BXXFD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      gtag("config", "G-0TTP3BXXFD");
+    </script>
+    <link rel="icon" href="icons/favicon.ico" type="image/ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="icons/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="icons/favicon-16x16.png"
+    />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="js/fancybox/jquery.fancybox.css"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
 
-  gtag('config', 'G-0TTP3BXXFD');
-</script>
-  <link rel="icon" href="icons/favicon.ico" type="image/ico" />
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/android-chrome-192x192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <link href="js/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="css/animate.css" rel="stylesheet" type="text/css" />
 
-  <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
-  <link href="css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+  </head>
 
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body id="main">
-  <!--Header_section-->
-  <header id="header_section">
-    <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
-      <div class="container-lg">
-        <a class="navbar-brand logo" href="#">
-          <span style="color: red">Marubbi</span><span style="color: #5db59c">.com</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ms-auto">
-            <a class="nav-link" aria-current="page" href="#main">Home</a>
-            <a class="nav-link" href="#workhistory_section">Work</a>
-            <a class="nav-link" href="#projects_section">Projects</a>
+  <body id="main">
+    <!--Header_section-->
+    <header id="header_section">
+      <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
+        <div class="container-lg">
+          <a class="navbar-brand logo" href="#">
+            <span style="color: red">Marubbi</span
+            ><span style="color: #5db59c">.com</span>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" aria-current="page" href="#main">Home</a>
+              <a class="nav-link" href="#workhistory_section">Work</a>
+              <a class="nav-link" href="#projects_section">Projects</a>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <!--Header_section-->
+      </nav>
+    </header>
+    <!--Header_section-->
 
-  <!--Home_Section-->
-  <section id="home_section" class="home_section">
+    <!--Home_Section-->
+    <section id="home_section" class="home_section">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="zoomIn animated">
               <h1>
-                Analyst, Developer, Systems&nbspDesigner,<br>Teacher, Father, Problem&nbspSolver, <br>
-                Handyman, Gardener <br /><strong class="green">and more...</strong>
-                <br /><img class="avatar" src="img\dave300.png" alt="cartoon head of dave" />
+                Analyst, Developer, Systems&nbspDesigner,<br />Teacher, Father,
+                Problem&nbspSolver, <br />
+                Handyman, Gardener <br /><strong class="green"
+                  >and more...</strong
+                >
+                <br /><img
+                  class="avatar"
+                  src="img\dave300.png"
+                  alt="cartoon head of dave"
+                />
               </h1>
               <div class="home_text">
                 <p>
-                  Hi, welcome to my simple website which I use as a launch pad for my various projects (past and present) and for potential employers to get a glance of my skills. An alternative CV you may say...
+                  Hi, welcome to my simple website which I use as a launch pad
+                  for my various projects (past and present) and for potential
+                  employers to get a glance of my skills. An alternative CV you
+                  may say...
                 </p>
                 <p>If you want to contact me about my work, please do.</p>
                 <p class="text-center">
-                  <a href="mailto:dave@marubbi.com" role="button" class="btn btn-primary">
-                   Email Me
+                  <a
+                    href="mailto:dave@marubbi.com"
+                    role="button"
+                    class="btn btn-primary"
+                  >
+                    Email Me
                   </a>
                 </p>
               </div>
@@ -79,44 +129,70 @@
           </div>
         </div>
       </div>
+    </section>
 
-  </section>
-
-  <!--About Section-->
-  <section id="workhistory_section">
-    <div class="container-md fadeInLeft animated wow">
-      <h2>Work History</h2>
-      <div class="row">
-        <div class="col-lg-12 about-us">
-          <p>A brief outline of 30+ years of experience. Jobs, projects, locations, companies, it all soon adds up.
-            <br />
-          </p>
-          <ul class="about-us-list">
-            <li class="points">01/2024 - 12/2024 - IT Tutor / College Course Leader (Web App Dev)</li>
-            <li class="points">06/2021 - 01/2024 - Project Officer / Business Systems Developer</li>
-            <li class="points">11/2015 - 05/2021 - MIS Manager and Network Manager</li>
-            <li class="points">01/2008 - 11/2014 - Project Manager / Bid Manager / Implementation Consultant</li>
-            <li class="points">09/2003 - 12/2007 - Secondary School Teacher of IT</li>
-            <li class="points">12/1994 - 08/2001 - Business Systems Developer / Project Manager</li>
-            <li class="points">06/1988 - 12/1994 - IT Manager / Analyst & Programmer</li>
-          </ul>
-          <h2>Qualifications</h2>
-          <div class="row">
-            <div class="col-lg-12 about-us">
-              <ul class="about-us-list">
-                <li class="points">PGCE (Secondary School / ICT) - University of Derby [2003]</li>
-                <li class="points">BSc in Information Systems 2:1 (Hons) - University of Derby [2002]</li>
-                <li class="points">HNC / HND in Computer Studies - Deeside College [1992]</li>
-              </ul>
+    <!--About Section-->
+    <section id="workhistory_section">
+      <div class="container-md fadeInLeft animated wow">
+        <h2>Work History</h2>
+        <div class="row">
+          <div class="col-lg-12 about-us">
+            <p>
+              A brief outline of 30+ years of experience. Jobs, projects,
+              locations, companies, it all soon adds up.
+              <br />
+            </p>
+            <ul class="about-us-list">
+              <li class="points">
+                02/2025 - 05/2025 - Senior Data Analyst (Power Bi)
+              </li>
+              <li class="points">
+                01/2024 - 12/2024 - IT Tutor / College Course Leader (Web App
+                Dev)
+              </li>
+              <li class="points">
+                06/2021 - 01/2024 - Project Officer / Business Systems Developer
+              </li>
+              <li class="points">
+                11/2015 - 05/2021 - MIS Manager and Network Manager
+              </li>
+              <li class="points">
+                01/2008 - 11/2014 - Project Manager / Bid Manager /
+                Implementation Consultant
+              </li>
+              <li class="points">
+                09/2003 - 12/2007 - Secondary School Teacher of IT
+              </li>
+              <li class="points">
+                12/1994 - 08/2001 - Business Systems Developer / Project Manager
+              </li>
+              <li class="points">
+                06/1988 - 12/1994 - IT Manager / Analyst & Programmer
+              </li>
+            </ul>
+            <h2>Qualifications</h2>
+            <div class="row">
+              <div class="col-lg-12 about-us">
+                <ul class="about-us-list">
+                  <li class="points">
+                    PGCE (Secondary School / ICT) - University of Derby [2003]
+                  </li>
+                  <li class="points">
+                    BSc in Information Systems 2:1 (Hons) - University of Derby
+                    [2002]
+                  </li>
+                  <li class="points">
+                    HNC / HND in Computer Studies - Deeside College [1992]
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <!-- Projects -->
+    <!-- Projects -->
     <section id="projects_section">
       <div class="container-md fadeInLeft animated wow">
         <h2>Projects</h2>
@@ -125,11 +201,21 @@
           <div class="col-md-6">
             <div class="card">
               <div class="card-body">
-                <img src="img/FoxCamDerbySplash.png" class="card-img-top" alt="Project Noodles" />
+                <img
+                  src="img/FoxCamDerbySplash.png"
+                  class="card-img-top"
+                  alt="Project Noodles"
+                />
                 <h5 class="card-title">Youtube Channel (Shorts)</h5>
-                <p class="card-text">@FoxCamDerby - Various recordings of night time creatures visiting my garden over the winter.</p>
-                <a href="https://www.youtube.com/channel/UCKwGT9BzVu6s55G-HcVWqyg" class="btn btn-primary">Visit Youtube
-                  Channel</a>
+                <p class="card-text">
+                  @FoxCamDerby - Various recordings of night time creatures
+                  visiting my garden over the winter.
+                </p>
+                <a
+                  href="https://www.youtube.com/channel/UCKwGT9BzVu6s55G-HcVWqyg"
+                  class="btn btn-primary"
+                  >Visit Youtube Channel</a
+                >
               </div>
             </div>
           </div>
@@ -137,11 +223,25 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-body">
-                <img src="img/NoodlesSplash.png" class="card-img-top" alt="Project Noodles" />
-                <h5 class="card-title">&lt;🍜&gt; Instant<span
-                    style="text-decoration: line-through; opacity: 0.3">iated</span> Noodles</h5>
-                <p class="card-text">A web app built after completing a HTML/CSS/Javascript Bootcamp Course and utilising MongoDB & Mapbox.</p>
-                <a href="https:\\noodles.marubbi.com" class="btn btn-primary">Open Application</a>
+                <img
+                  src="img/NoodlesSplash.png"
+                  class="card-img-top"
+                  alt="Project Noodles"
+                />
+                <h5 class="card-title">
+                  &lt;🍜&gt; Instant<span
+                    style="text-decoration: line-through; opacity: 0.3"
+                    >iated</span
+                  >
+                  Noodles
+                </h5>
+                <p class="card-text">
+                  A web app built after completing a HTML/CSS/Javascript
+                  Bootcamp Course and utilising MongoDB & Mapbox.
+                </p>
+                <a href="https:\\noodles.marubbi.com" class="btn btn-primary"
+                  >Open Application</a
+                >
               </div>
             </div>
           </div>
@@ -149,11 +249,20 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-body">
-                <img src="img/ArtworkSplash.png" class="card-img-top" alt="Project Artwork" />
+                <img
+                  src="img/ArtworkSplash.png"
+                  class="card-img-top"
+                  alt="Project Artwork"
+                />
                 <h5 class="card-title">Artisitc Creations</h5>
                 <p class="card-text">
-                  When artistic inspiration hits you just have to go with it.  Here's a gallery of some of my creations over the last 20 years...</p>
-                <a href="./project_artwork.html" class="btn btn-primary">View Gallery</a>
+                  When artistic inspiration hits you just have to go with it.
+                  Here's a gallery of some of my creations over the last 20
+                  years...
+                </p>
+                <a href="./project_artwork.html" class="btn btn-primary"
+                  >View Gallery</a
+                >
               </div>
             </div>
           </div>
@@ -161,10 +270,19 @@
           <div class="col-sm-6">
             <div class="card">
               <div class="card-body">
-                <img src="img/GardenSplash.png" class="card-img-top" alt="Project Noodles" />
+                <img
+                  src="img/GardenSplash.png"
+                  class="card-img-top"
+                  alt="Project Noodles"
+                />
                 <h5 class="card-title">Garden Canvas</h5>
-                <p class="card-text">Post Covid I moved home with a very large garden...needing a lot of work...</p>
-                <a href="./project_garden.html" class="btn btn-primary">View Gallery</a>
+                <p class="card-text">
+                  Post Covid I moved home with a very large garden...needing a
+                  lot of work...
+                </p>
+                <a href="./project_garden.html" class="btn btn-primary"
+                  >View Gallery</a
+                >
               </div>
             </div>
           </div>
@@ -172,27 +290,25 @@
       </div>
     </section>
 
-
-
-
     <!--Footer-->
-    <footer id="footer">
-    Last Updated - June 2024
-    </footer>
+    <footer id="footer">Last Updated - June 2024</footer>
+  </body>
 
-</body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
-    <script type="text/javascript" src="js/jquery.nav.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="js/jquery.isotope.js"></script>
-    <script src="js/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/wow.js"></script>
-    <script type="text/javascript" src="js/custom.js"></script>
-
+  <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
+  <script type="text/javascript" src="js/jquery.nav.js"></script>
+  <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+  <script type="text/javascript" src="js/jquery.isotope.js"></script>
+  <script
+    src="js/fancybox/jquery.fancybox.pack.js"
+    type="text/javascript"
+  ></script>
+  <script type="text/javascript" src="js/wow.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
 </html>
