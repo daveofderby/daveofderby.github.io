@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Location Tracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+
+<script>
+  const map = L.map("map").setView([0, 0], 2); // Initial view [latitude, longitude], zoom
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+  }).addTo(map);
+
+  const userMarker = L.marker([0, 0]).addTo(map);
+
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const newLatLng = new L.LatLng(latitude, longitude);
+
+        // Update the marker's position
+        userMarker.setLatLng(newLatLng);
+
+        // Center the map on the new position
+        map.panTo(newLatLng);
+      },
+      (error) => {
+        console.error("Error getting location:", error);
+        alert("Error: The Geolocation service failed.");
+      },
+      {
+        enableHighAccuracy: true, // Request more accurate location
+        timeout: 5000, // Wait up to 5 seconds for a result
+        maximumAge: 0, // Don't use a cached position
+      }
+    );
+  } else {
+    alert("Geolocation is not supported by your browser.");
+  }
+</script>
