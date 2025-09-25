@@ -76,13 +76,16 @@
 
   const userMarker = L.marker([0, 0]).addTo(map);
 
+  const fromMarker = L.marker([lat01, lon01]).addTo(map);
+  const toMarker = L.marker([lat02, lon02]).addTo(map);
+
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
         const newLatLng = new L.LatLng(latitude, longitude);
 
-        map.setView([latitude, longitude], 17);
+        map.setView([latitude, longitude], 20);
 
         // Update the marker's position
         userMarker.setLatLng(newLatLng);
