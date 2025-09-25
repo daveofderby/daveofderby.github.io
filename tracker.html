@@ -28,7 +28,7 @@
   const map = L.map("map").setView([0, 0], 15); // Initial view [latitude, longitude], zoom
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>',
   }).addTo(map);
 
   const userMarker = L.marker([0, 0]).addTo(map);
@@ -46,6 +46,8 @@
 
         // Center the map on the new position
         map.panTo(newLatLng);
+
+        console.log(position.timestamp);
       },
       (error) => {
         console.error("Error getting location:", error);
@@ -54,7 +56,7 @@
       {
         enableHighAccuracy: true, // Request more accurate location
         timeout: 5000, // Wait up to 5 seconds for a result
-        maximumAge: 0, // Don't use a cached position
+        maximumAge: 3000, // Don't use a cached position if set to 0
       }
     );
   } else {
