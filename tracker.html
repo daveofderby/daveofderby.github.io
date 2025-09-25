@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
       #map {
-        height: 100vh;
+        height: 50vh;
         width: 100%;
       }
       html,
@@ -19,12 +19,55 @@
   </head>
   <body>
     <div id="map"></div>
+    <div id="info"></div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <!-- <script src="app.js"></script> -->
   </body>
 </html>
 
 <script>
+  const lat01 = 52.8902;
+  const lon01 = -1.502752;
+  const lat02 = 52.890486;
+  const lon02 = -1.502613;
+
+  function degreesToRadians(degrees) {
+    return degrees * (Math.PI / 180);
+  }
+
+  function calculateDistance(lat01, lon01, lat02, lon02) {
+    const R = 6371; // Earth's radius in kilometers
+    const rlat1 = degreesToRadians(lat01);
+    const rlat2 = degreesToRadians(lat02);
+    const difflat = rlat2 - rlat1;
+    const difflon = degreesToRadians(lon02) - degreesToRadians(lon01);
+
+    const d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
+    return d * 1000; // in metres
+  }
+
+  function calculateBearing(lat1, lon1, lat2, lon2) {
+    const rlat1 = degreesToRadians(lat1);
+    const rlat2 = degreesToRadians(lat2);
+    const difflon = degreesToRadians(lon2) - degreesToRadians(lon1);
+
+    const y = Math.sin(difflon) * Math.cos(rlat2);
+    const x = Math.cos(rlat1) * Math.sin(rlat2) - Math.sin(rlat1) * Math.cos(rlat2) * Math.cos(difflon);
+    const brng = Math.atan2(y, x); // in radians
+
+    // Convert radians to degrees and normalize to 0-360
+    return (brng * (180 / Math.PI) + 360) % 360;
+  }
+
+  const distance = calculateDistance(lat01, lon01, lat02, lon02);
+  const bearing = calculateBearing(lat01, lon01, lat02, lon02);
+
+  console.log(`Distance: ${distance.toFixed(0)} m`); // Distance in meters
+  console.log(`Initial Bearing: ${bearing.toFixed(0)}°`); // Initial bearing in degrees
+
+  const info = document.querySelector("#info");
+  info.innerHTML = `<p>From: ${lat01} / ${lon01}</p><p>To: ${lat02} / ${lon02}</p><p>Distance: ${distance.toFixed(0)} m</p><p>Initial Bearing: ${bearing.toFixed(0)}°</p>`;
+
   const map = L.map("map").setView([0, 0], 15); // Initial view [latitude, longitude], zoom
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
