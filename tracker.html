@@ -47,6 +47,7 @@
 
       console.error("Error getting location:", error);
       console.log("Error: The Geolocation service failed.");
+      return error;
     },
     {
       enableHighAccuracy: false, // Request more accurate location
@@ -70,8 +71,8 @@
 
   let toLat = 52.8902;
   let toLon = -1.502752;
-  const lat02 = 52.890486;
-  const lon02 = -1.502613;
+  // const lat02 = 52.890486;
+  // const lon02 = -1.502613;
 
   function degreesToRadians(degrees) {
     return degrees * (Math.PI / 180);
@@ -101,7 +102,7 @@
     return (brng * (180 / Math.PI) + 360) % 360;
   }
 
-  const map = L.map("map", { zoomControl: false, boxZoom: false, zoomSnap: 0, doubleClickZoom: false, minZoom: 15, scrollWheelZoom: true, touchZoom: true }).setView([fromLat, fromLon], 18); // Initial view [latitude, longitude], zoom
+  const map = L.map("map", { zoomControl: false, boxZoom: false, zoomSnap: 0, doubleClickZoom: false, minZoom: 15, scrollWheelZoom: true, touchZoom: true }).setView([fromLat, fromLon], 19); // Initial view [latitude, longitude], zoom
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     // attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>',
@@ -122,8 +123,7 @@
 
   const userMarker = L.marker([0, 0], { riseOnHover: true, opacity: 1, icon: userIcon }).addTo(map);
 
-  const fromMarker = L.marker([fromLat, fromLon], { riseOnHover: true, opacity: 1, icon: pinIcon, title: "from" }).addTo(map);
-  const toMarker = L.marker([toLat, toLon], { riseOnHover: true, opacity: 1, icon: pinIcon }).addTo(map);
+  const destinationMarker = L.marker([toLat, toLon], { riseOnHover: true, opacity: 1, icon: pinIcon }).addTo(map);
 
   // userMarker.remove(map);
 
@@ -132,7 +132,7 @@
       (position) => {
         const { latitude, longitude } = position.coords;
         const newLatLng = new L.LatLng(latitude, longitude);
-        console.log(currentPosition);
+        console.log("Current Position Watch:", newLatLng);
         map.setView([latitude, longitude]);
 
         // Update the marker's position
@@ -141,7 +141,7 @@
         // Center the map on the new position
         map.panTo(newLatLng);
 
-        showInfo(latitude, longitude, lat02, lon02);
+        showInfo(latitude, longitude, toLat, toLon);
 
         console.log(position.timestamp);
       },
