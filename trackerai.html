@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coordinate Tracker</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+      #map {
+        height: 90vh;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Coordinate Tracker</h2>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      // Sample list of target coordinates (lat, lng)
+      const targets = [
+        { lat: 52.8902, lng: -1.502752, name: "Once upon a time there was a fox" },
+        { lat: 52.890486, lng: -1.502613, name: "Who was very fond of chilli" },
+        { lat: 52.89008, lng: -1.502809, name: "Who was very fond of chilli" },
+      ];
+
+      // Track which targets have been found
+      const foundTargets = new Set();
+
+      console.log(foundTargets);
+      // Create the map
+      const map = L.map("map").setView([52.89008, -1.502809], 18);
+
+      // Add OpenStreetMap tile layer
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      // Add target markers
+      targets.forEach((target) => {
+        L.marker([target.lat, target.lng]).addTo(map).bindPopup(target.name);
+      });
+
+      // Simulate user's moving position
+      let userLat = 52.89008;
+      let userLng = -1.502809;
+
+      const userMarker = L.marker([userLat, userLng], {
+        color: "blue",
+      })
+        .addTo(map)
+        .bindPopup("You");
+
+      // Distance function (Haversine)
+      function getDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371e3; // Earth radius in meters
+        const toRad = (x) => (x * Math.PI) / 180;
+        const dLat = toRad(lat2 - lat1);
+        const dLon = toRad(lon2 - lon1);
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+      }
+
+      // Simulate movement and check targets
+      let moveStep = 0;
+
+      function moveAndCheck() {
+        // Move user position a bit each time (simulate)
+        userLat += 0.000019;
+        userLng += 0.00001;
+
+        userMarker.setLatLng([userLat, userLng]);
+
+        // Check each target
+        targets.forEach((target) => {
+          const distance = getDistance(userLat, userLng, target.lat, target.lng);
+          if (distance < 5 && !foundTargets.has(target.name)) {
+            foundTargets.add(target.name);
+            console.log(foundTargets);
+            alert(`You found ${target.name}!`);
+          }
+        });
+
+        // Stop after some moves
+        moveStep++;
+        if (moveStep < 50) {
+          setTimeout(moveAndCheck, 500);
+        }
+      }
+
+      // Start simulation
+      moveAndCheck();
+    </script>
+  </body>
+</html>
