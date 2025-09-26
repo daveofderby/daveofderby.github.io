@@ -100,7 +100,8 @@
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
       (position) => {
-        const { fromLat: latitude, fromLon: longitude } = position.coords;
+        fromLat = position.coords.latitude;
+        fromLon = position.coords.longitude;
         const newLatLng = new L.LatLng(fromLat, fromLon);
         console.log("Current Position Watch:", newLatLng);
         map.setView([fromLat, fromLon]);
@@ -145,7 +146,7 @@
     console.log(`Initial Bearing: ${bearing.toFixed(0)}°`); // Initial bearing in degrees
 
     const info = document.querySelector("#info");
-    info.innerHTML = `<p>From: ${fromLat} / ${fromLon}</p><p>To: ${toLat} / ${toLon}</p><p>Distance: ${distance.toFixed(0)} m</p><p>Initial Bearing: ${bearing.toFixed(0)}°</p><p>Found Target: ${distance < 5 ? "True" : "False"}</p><p>Current Page: ${currentPage + 1}</p><p>Current Page: ${geoStoryPages[currentPage].title}</p>`;
+    info.innerHTML = `<p>From: ${fromLat} / ${fromLon}</p><p>To: ${toLat} / ${toLon}</p><p>Distance: ${distance.toFixed(0)} m</p><p>Initial Bearing: ${bearing.toFixed(0)}°</p><p>Found Target: ${distance < 5 ? "True" : "False"}</p><p>Current Page: ${currentPage + 1}</p><h3>${geoStoryPages[currentPage].title}</h3>`;
   }
 
   function degreesToRadians(degrees) {
