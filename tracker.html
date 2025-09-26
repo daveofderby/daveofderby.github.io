@@ -71,7 +71,7 @@
   const map = L.map("map", { zoomControl: false, boxZoom: false, zoomSnap: 0, doubleClickZoom: false, minZoom: 15, scrollWheelZoom: true, touchZoom: true }).setView([0, 0], 15); // Initial view [latitude, longitude], zoom
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>',
+    // attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>',
   }).addTo(map);
 
   const userIcon = L.icon({
@@ -94,7 +94,7 @@
         const { latitude, longitude } = position.coords;
         const newLatLng = new L.LatLng(latitude, longitude);
 
-        map.setView([latitude, longitude], 17);
+        map.setView([latitude, longitude], 18);
 
         // Update the marker's position
         userMarker.setLatLng(newLatLng);
