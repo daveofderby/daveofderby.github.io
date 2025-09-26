@@ -30,7 +30,7 @@
   const geoStoryPages = [
     { latitude: 52.8902, longitude: -1.502752, title: "Once upon a time there was a fox" },
     { latitude: 52.890486, longitude: -1.502613, title: "Who was very fond of chilli" },
-    { latitude: 52.8902, longitude: -1.502555, title: "but if he couldn't eat chilli, he ate cats!" },
+    { latitude: 52.89008, longitude: -1.502809, title: "but if he couldn't eat chilli, he ate cats!" },
   ];
 
   // define div sections
@@ -102,8 +102,9 @@
       (position) => {
         fromLat = position.coords.latitude;
         fromLon = position.coords.longitude;
+        console.log(fromLat, fromLon);
         const newLatLng = new L.LatLng(fromLat, fromLon);
-        console.log("Current Position Watch:", newLatLng);
+        console.log("Current Position Watch:", position);
         map.setView([fromLat, fromLon]);
 
         // Update the marker's position
