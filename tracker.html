@@ -68,16 +68,25 @@
   const info = document.querySelector("#info");
   info.innerHTML = `<p>From: ${lat01} / ${lon01}</p><p>To: ${lat02} / ${lon02}</p><p>Distance: ${distance.toFixed(0)} m</p><p>Initial Bearing: ${bearing.toFixed(0)}°</p>`;
 
-  const map = L.map("map").setView([0, 0], 15); // Initial view [latitude, longitude], zoom
+  const map = L.map("map", { zoomControl: false, boxZoom: false, zoomSnap: 0, doubleClickZoom: false, minZoom: 15, scrollWheelZoom: true, touchZoom: true }).setView([0, 0], 15); // Initial view [latitude, longitude], zoom
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>',
   }).addTo(map);
 
-  const userMarker = L.marker([0, 0]).addTo(map);
+  const userIcon = L.icon({
+    iconUrl: "icon-walking.gif",
+    iconSize: [30, 30],
+  });
 
-  const fromMarker = L.marker([lat01, lon01]).addTo(map);
-  const toMarker = L.marker([lat02, lon02]).addTo(map);
+  const pinIcon = L.icon({
+    iconUrl: "pinIcon.png",
+  });
+
+  const userMarker = L.marker([0, 0], { riseOnHover: true, opacity: 1, icon: userIcon }).addTo(map);
+
+  const fromMarker = L.marker([lat01, lon01], { riseOnHover: true, opacity: 1, icon: pinIcon, title: "from" }).addTo(map);
+  const toMarker = L.marker([lat02, lon02], { riseOnHover: true, opacity: 1, icon: pinIcon }).addTo(map);
 
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
@@ -85,7 +94,7 @@
         const { latitude, longitude } = position.coords;
         const newLatLng = new L.LatLng(latitude, longitude);
 
-        map.setView([latitude, longitude], 20);
+        map.setView([latitude, longitude], 17);
 
         // Update the marker's position
         userMarker.setLatLng(newLatLng);
@@ -97,7 +106,7 @@
       },
       (error) => {
         console.error("Error getting location:", error);
-        alert("Error: The Geolocation service failed.");
+        console.log("Error: The Geolocation service failed.");
       },
       {
         enableHighAccuracy: true, // Request more accurate location
