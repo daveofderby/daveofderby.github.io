@@ -82,14 +82,16 @@
 
   const pinIcon = L.icon({
     iconUrl: "icon-page.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 25],
+    iconSize: [24, 30],
+    iconAnchor: [12, 25],
   });
 
   const userMarker = L.marker([0, 0], { riseOnHover: true, opacity: 1, icon: userIcon }).addTo(map);
 
   const fromMarker = L.marker([lat01, lon01], { riseOnHover: true, opacity: 1, icon: pinIcon, title: "from" }).addTo(map);
   const toMarker = L.marker([lat02, lon02], { riseOnHover: true, opacity: 1, icon: pinIcon }).addTo(map);
+
+  // userMarker.remove(map);
 
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
