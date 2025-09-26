@@ -68,19 +68,22 @@
   const info = document.querySelector("#info");
   info.innerHTML = `<p>From: ${lat01} / ${lon01}</p><p>To: ${lat02} / ${lon02}</p><p>Distance: ${distance.toFixed(0)} m</p><p>Initial Bearing: ${bearing.toFixed(0)}°</p>`;
 
-  const map = L.map("map", { zoomControl: false, boxZoom: false, zoomSnap: 0, doubleClickZoom: false, minZoom: 15, scrollWheelZoom: true, touchZoom: true }).setView([0, 0], 15); // Initial view [latitude, longitude], zoom
+  const map = L.map("map", { zoomControl: false, boxZoom: false, zoomSnap: 0, doubleClickZoom: false, minZoom: 15, scrollWheelZoom: true, touchZoom: true }).setView([0, 0], 18); // Initial view [latitude, longitude], zoom
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     // attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>',
   }).addTo(map);
 
   const userIcon = L.icon({
-    iconUrl: "icon-walking.gif",
+    iconUrl: "icon-man.png",
     iconSize: [30, 30],
+    iconAnchor: [15, 25],
   });
 
   const pinIcon = L.icon({
-    iconUrl: "pinIcon.png",
+    iconUrl: "icon-page.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 25],
   });
 
   const userMarker = L.marker([0, 0], { riseOnHover: true, opacity: 1, icon: userIcon }).addTo(map);
@@ -94,7 +97,7 @@
         const { latitude, longitude } = position.coords;
         const newLatLng = new L.LatLng(latitude, longitude);
 
-        map.setView([latitude, longitude], 18);
+        map.setView([latitude, longitude]);
 
         // Update the marker's position
         userMarker.setLatLng(newLatLng);
@@ -110,7 +113,7 @@
       },
       {
         enableHighAccuracy: true, // Request more accurate location
-        timeout: 5000, // Wait up to 5 seconds for a result
+        timeout: 1000, // Wait up to 5 seconds for a result
         maximumAge: 3000, // Don't use a cached position if set to 0
       }
     );
