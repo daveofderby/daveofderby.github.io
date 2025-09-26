@@ -26,8 +26,50 @@
 </html>
 
 <script>
-  const lat01 = 52.8902;
-  const lon01 = -1.502752;
+  // define div sections
+  const divInfo = document.querySelector("#info");
+
+  let fromLat = 0;
+  let fromLon = 0;
+
+  // get starting position
+  const currentPosition = navigator.geolocation.getCurrentPosition(
+    (position) => {
+      console.log("Current Position inside: ", position.coords);
+      let fromLat = position.coords.latitude;
+      let fromLon = position.coords.longitude;
+      return position.coords;
+    },
+    (error) => {
+      const resetButton = document.createElement("btn").className("btn");
+      resetButton.innerHTML = "Retry";
+      divInfo.append(resetButton);
+
+      console.error("Error getting location:", error);
+      console.log("Error: The Geolocation service failed.");
+    },
+    {
+      enableHighAccuracy: false, // Request more accurate location
+      timeout: 0, // Wait up to 5 seconds for a result
+      maximumAge: 0, // Don't use a cached position if set to 0
+    }
+  );
+
+  console.log("Current Position: ", currentPosition);
+
+  function showInfo(fromLat, fromLon, toLat, toLon) {
+    const distance = calculateDistance(fromLat, fromLon, toLat, toLon);
+    const bearing = calculateBearing(fromLat, fromLon, toLat, toLon);
+
+    console.log(`Distance: ${distance.toFixed(0)} m`); // Distance in meters
+    console.log(`Initial Bearing: ${bearing.toFixed(0)}°`); // Initial bearing in degrees
+
+    const info = document.querySelector("#info");
+    info.innerHTML = `<p>From: ${fromLat} / ${fromLon}</p><p>To: ${toLat} / ${toLon}</p><p>Distance: ${distance.toFixed(0)} m</p><p>Initial Bearing: ${bearing.toFixed(0)}°</p><p>Found Target: ${distance < 5 ? "True" : "False"}</p>`;
+  }
+
+  let toLat = 52.8902;
+  let toLon = -1.502752;
   const lat02 = 52.890486;
   const lon02 = -1.502613;
 
@@ -35,21 +77,21 @@
     return degrees * (Math.PI / 180);
   }
 
-  function calculateDistance(lat01, lon01, lat02, lon02) {
+  function calculateDistance(fromLat, fromLon, toLat, toLon) {
     const R = 6371; // Earth's radius in kilometers
-    const rlat1 = degreesToRadians(lat01);
-    const rlat2 = degreesToRadians(lat02);
+    const rlat1 = degreesToRadians(fromLat);
+    const rlat2 = degreesToRadians(toLat);
     const difflat = rlat2 - rlat1;
-    const difflon = degreesToRadians(lon02) - degreesToRadians(lon01);
+    const difflon = degreesToRadians(toLon) - degreesToRadians(fromLon);
 
     const d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
     return d * 1000; // in metres
   }
 
-  function calculateBearing(lat1, lon1, lat2, lon2) {
-    const rlat1 = degreesToRadians(lat1);
-    const rlat2 = degreesToRadians(lat2);
-    const difflon = degreesToRadians(lon2) - degreesToRadians(lon1);
+  function calculateBearing(fromLat, fromLon, toLat, toLon) {
+    const rlat1 = degreesToRadians(fromLat);
+    const rlat2 = degreesToRadians(toLat);
+    const difflon = degreesToRadians(toLon) - degreesToRadians(fromLon);
 
     const y = Math.sin(difflon) * Math.cos(rlat2);
     const x = Math.cos(rlat1) * Math.sin(rlat2) - Math.sin(rlat1) * Math.cos(rlat2) * Math.cos(difflon);
@@ -59,16 +101,7 @@
     return (brng * (180 / Math.PI) + 360) % 360;
   }
 
-  const distance = calculateDistance(lat01, lon01, lat02, lon02);
-  const bearing = calculateBearing(lat01, lon01, lat02, lon02);
-
-  console.log(`Distance: ${distance.toFixed(0)} m`); // Distance in meters
-  console.log(`Initial Bearing: ${bearing.toFixed(0)}°`); // Initial bearing in degrees
-
-  const info = document.querySelector("#info");
-  info.innerHTML = `<p>From: ${lat01} / ${lon01}</p><p>To: ${lat02} / ${lon02}</p><p>Distance: ${distance.toFixed(0)} m</p><p>Initial Bearing: ${bearing.toFixed(0)}°</p>`;
-
-  const map = L.map("map", { zoomControl: false, boxZoom: false, zoomSnap: 0, doubleClickZoom: false, minZoom: 15, scrollWheelZoom: true, touchZoom: true }).setView([0, 0], 18); // Initial view [latitude, longitude], zoom
+  const map = L.map("map", { zoomControl: false, boxZoom: false, zoomSnap: 0, doubleClickZoom: false, minZoom: 15, scrollWheelZoom: true, touchZoom: true }).setView([fromLat, fromLon], 18); // Initial view [latitude, longitude], zoom
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     // attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a>',
@@ -78,6 +111,7 @@
     iconUrl: "icon-man.png",
     iconSize: [30, 30],
     iconAnchor: [15, 25],
+    zIndexOffset: 1000,
   });
 
   const pinIcon = L.icon({
@@ -88,8 +122,8 @@
 
   const userMarker = L.marker([0, 0], { riseOnHover: true, opacity: 1, icon: userIcon }).addTo(map);
 
-  const fromMarker = L.marker([lat01, lon01], { riseOnHover: true, opacity: 1, icon: pinIcon, title: "from" }).addTo(map);
-  const toMarker = L.marker([lat02, lon02], { riseOnHover: true, opacity: 1, icon: pinIcon }).addTo(map);
+  const fromMarker = L.marker([fromLat, fromLon], { riseOnHover: true, opacity: 1, icon: pinIcon, title: "from" }).addTo(map);
+  const toMarker = L.marker([toLat, toLon], { riseOnHover: true, opacity: 1, icon: pinIcon }).addTo(map);
 
   // userMarker.remove(map);
 
@@ -98,7 +132,7 @@
       (position) => {
         const { latitude, longitude } = position.coords;
         const newLatLng = new L.LatLng(latitude, longitude);
-
+        console.log(currentPosition);
         map.setView([latitude, longitude]);
 
         // Update the marker's position
@@ -106,6 +140,8 @@
 
         // Center the map on the new position
         map.panTo(newLatLng);
+
+        showInfo(latitude, longitude, lat02, lon02);
 
         console.log(position.timestamp);
       },
