@@ -1,97 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Coordinate Tracker</title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <title>Sequential Location Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-      #map {
-        height: 90vh;
+      .popup {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
         width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      .popup-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px 30px;
+        border-radius: 10px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .close-btn {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .popup-content button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #28a745;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .popup-content button:hover {
+        background-color: #218838;
       }
     </style>
   </head>
   <body>
-    <h2>Coordinate Tracker</h2>
-    <div id="map"></div>
+    <h2>🛰️ Sequential Location Tracking</h2>
+    <p>Location tracking will move through locations in order.</p>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Popup Modal -->
+    <div id="locationPopup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <p id="popupMessage">You've reached a location!</p>
+        <button id="nextLocationBtn">Next Location</button>
+      </div>
+    </div>
+
     <script>
-      // Sample list of target coordinates (lat, lng)
-      const targets = [
-        { lat: 52.8902, lng: -1.502752, name: "Once upon a time there was a fox" },
-        { lat: 52.890486, lng: -1.502613, name: "Who was very fond of chilli" },
-        { lat: 52.89008, lng: -1.502809, name: "Who was very fond of chilli" },
+      // Ordered list of locations
+      const targetLocations = [
+        { name: "Location A", latitude: 40.7128, longitude: -74.006 }, // NYC
+        { name: "Location B", latitude: 34.0522, longitude: -118.2437 }, // LA
+        { name: "Location C", latitude: 51.5074, longitude: -0.1278 }, // London
       ];
 
-      // Track which targets have been found
-      const foundTargets = new Set();
+      const MATCH_RADIUS_METERS = 100;
+      let currentIndex = 0;
+      let monitoringEnabled = true;
 
-      console.log(foundTargets);
-      // Create the map
-      const map = L.map("map").setView([52.89008, -1.502809], 18);
+      function getDistanceInMeters(lat1, lon1, lat2, lon2) {
+        const R = 6371e3;
+        const φ1 = (lat1 * Math.PI) / 180;
+        const φ2 = (lat2 * Math.PI) / 180;
+        const Δφ = ((lat2 - lat1) * Math.PI) / 180;
+        const Δλ = ((lon2 - lon1) * Math.PI) / 180;
 
-      // Add OpenStreetMap tile layer
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
-      }).addTo(map);
+        const a =
+          Math.sin(Δφ / 2) ** 2 +
+          Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
 
-      // Add target markers
-      targets.forEach((target) => {
-        L.marker([target.lat, target.lng]).addTo(map).bindPopup(target.name);
-      });
-
-      // Simulate user's moving position
-      let userLat = 52.89008;
-      let userLng = -1.502809;
-
-      const userMarker = L.marker([userLat, userLng], {
-        color: "blue",
-      })
-        .addTo(map)
-        .bindPopup("You");
-
-      // Distance function (Haversine)
-      function getDistance(lat1, lon1, lat2, lon2) {
-        const R = 6371e3; // Earth radius in meters
-        const toRad = (x) => (x * Math.PI) / 180;
-        const dLat = toRad(lat2 - lat1);
-        const dLon = toRad(lon2 - lon1);
-        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return R * c;
       }
 
-      // Simulate movement and check targets
-      let moveStep = 0;
+      function showPopup(message) {
+        const popup = document.getElementById("locationPopup");
+        const popupMsg = document.getElementById("popupMessage");
+        popupMsg.textContent = message;
+        popup.style.display = "block";
+      }
 
-      function moveAndCheck() {
-        // Move user position a bit each time (simulate)
-        userLat += 0.000019;
-        userLng += 0.00001;
+      function closePopup() {
+        document.getElementById("locationPopup").style.display = "none";
+      }
 
-        userMarker.setLatLng([userLat, userLng]);
+      function checkCurrentLocation(currentLat, currentLng) {
+        if (!monitoringEnabled || currentIndex >= targetLocations.length)
+          return;
 
-        // Check each target
-        targets.forEach((target) => {
-          const distance = getDistance(userLat, userLng, target.lat, target.lng);
-          if (distance < 5 && !foundTargets.has(target.name)) {
-            foundTargets.add(target.name);
-            console.log(foundTargets);
-            alert(`You found ${target.name}!`);
-          }
-        });
+        const location = targetLocations[currentIndex];
+        const distance = getDistanceInMeters(
+          currentLat,
+          currentLng,
+          location.latitude,
+          location.longitude
+        );
 
-        // Stop after some moves
-        moveStep++;
-        if (moveStep < 50) {
-          setTimeout(moveAndCheck, 500);
+        console.log(
+          `Checking ${location.name}: ${distance.toFixed(2)} meters away`
+        );
+
+        if (distance <= MATCH_RADIUS_METERS) {
+          monitoringEnabled = false; // stop checking until user clicks "Next"
+          showPopup(`🎉 You've arrived at ${location.name}!`);
         }
       }
 
-      // Start simulation
-      moveAndCheck();
+      function startLocationMonitoring() {
+        if (!navigator.geolocation) {
+          alert("Geolocation is not supported by your browser.");
+          return;
+        }
+
+        navigator.geolocation.watchPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            console.log(`📍 Current: ${latitude}, ${longitude}`);
+            checkCurrentLocation(latitude, longitude);
+          },
+          (error) => {
+            console.error("Geolocation error:", error.message);
+            alert("Error getting location: " + error.message);
+          },
+          {
+            enableHighAccuracy: true,
+            maximumAge: 10000,
+            timeout: 5000,
+          }
+        );
+      }
+
+      document
+        .getElementById("nextLocationBtn")
+        .addEventListener("click", () => {
+          closePopup();
+          currentIndex++;
+
+          if (currentIndex >= targetLocations.length) {
+            showPopup("✅ You've completed all locations!");
+            document.getElementById("nextLocationBtn").style.display = "none";
+          } else {
+            monitoringEnabled = true; // resume monitoring
+          }
+        });
+
+      // Start on load
+      window.onload = startLocationMonitoring;
     </script>
   </body>
 </html>
