@@ -42,7 +42,7 @@
   </head>
   <body>
     <div id="map">Map</div>
-
+    <div id="info"></div>
     <div id="overlay">Overlay</div>
     <div id="popup">
       <p id="popup-message"></p>
@@ -54,8 +54,8 @@
       // ✅ Story locations
       const presetLocations = [
         { lat: 52.8902, lng: -1.502752, name: "Once upon a time there was a fox" },
-        { lat: 52.890486, lng: -1.502613, name: "Who was very fond of chilli" },
-        { lat: 52.89008, lng: -1.502809, name: "but if he couldn't eat chilli, he ate cats!" },
+        { lat: 52.89038, lng: -1.50266, name: "Who was very fond of chilli" },
+        { lat: 52.890486, lng: -1.502613, name: "but if he couldn't eat chilli, he ate cats!" },
       ];
 
       let currentIndex = 0;
@@ -90,7 +90,20 @@
       // Icons
       const tickIcon = L.icon({
         iconUrl: "https://cdn-icons-png.flaticon.com/512/190/190411.png", // green check
-        iconSize: [32, 32],
+        iconSize: [15, 15],
+      });
+
+      const userIcon = L.icon({
+        iconUrl: "icon-man.png",
+        iconSize: [30, 30],
+        iconAnchor: [15, 25],
+        zIndexOffset: 1000,
+      });
+
+      const targetIcon = L.icon({
+        iconUrl: "icon-page.png",
+        iconSize: [24, 30],
+        iconAnchor: [12, 25],
       });
 
       let nextMarker;
@@ -118,23 +131,8 @@
         }
       });
 
-      // // 📍 Get initial location
-      // let startPosition;
-
-      // if (navigator.geolocation) {
-      //   navigator.geolocation.getCurrentPosition(
-      //     (pos) => {
-      //       startPosition = pos.coords;
-      //     },
-      //     (err) => console.error(err),
-      //     { enableHighAccuracy: true, maximumAge: 1000, timeout: 5000 }
-      //   );
-      // } else {
-      //   alert("Geolocation not supported.");
-      // }
-
       // Initialize map
-      const map = L.map("map").setView([presetLocations[0].lat, presetLocations[0].lng], 20);
+      const map = L.map("map").setView([presetLocations[0].lat, presetLocations[0].lng], 19);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap contributors",
@@ -160,19 +158,6 @@
       //   fillOpacity: 0.9,
       // }).addTo(map);
 
-      const userIcon = L.icon({
-        iconUrl: "icon-man.png",
-        iconSize: [30, 30],
-        iconAnchor: [15, 25],
-        zIndexOffset: 1000,
-      });
-
-      const targetIcon = L.icon({
-        iconUrl: "icon-page.png",
-        iconSize: [24, 30],
-        iconAnchor: [12, 25],
-      });
-
       const userMarker = L.marker([presetLocations[0].lat, presetLocations[0].lng], { riseOnHover: true, opacity: 1, icon: userIcon }).addTo(map);
 
       // 🎯 First target marker
@@ -183,9 +168,18 @@
       // Initial route
       routeLine = L.polyline([userMarker.getLatLng(), nextMarker.getLatLng()], {
         color: "blue",
-        weight: 3,
+        weight: 2,
         dashArray: "5, 10",
       }).addTo(map);
+
+      function showInfo(fromLat, fromLon, toLat, toLon, distance, bearing) {
+        console.log(`Distance: ${distance.toFixed(0)} m`); // Distance in meters
+        // console.log(`Initial Bearing: ${bearing.toFixed(0)}°`); // Initial bearing in degrees
+
+        const info = document.querySelector("#info");
+        // info.innerHTML = `<p>From: ${fromLat} / ${fromLon}</p><p>To: ${toLat} / ${toLon}</p><p>Distance: ${distance.toFixed(0)} m</p><p>Initial Bearing: ${bearing.toFixed(0)}°</p><p>Found Target: ${distance < 5 ? "True" : "False"}</p><p>Current Page: ${currentPage + 1}</p><h3>${geoStoryPages[currentPage].title}</h3>`;
+        info.innerHTML = `<p>From: ${fromLat} / ${fromLon}</p><p>To: ${toLat} / ${toLon}</p><p>Distance: ${distance.toFixed(0)} m</p>`;
+      }
 
       // 📍 Track user location
       if (navigator.geolocation) {
@@ -208,6 +202,7 @@
             if (currentIndex < presetLocations.length && !reached) {
               const target = presetLocations[currentIndex];
               const dist = getDistance(latitude, longitude, target.lat, target.lng);
+              showInfo(latitude, longitude, target.lat, target.lng, dist);
               if (dist <= 5) {
                 reached = true;
                 nextMarker.setIcon(tickIcon);
