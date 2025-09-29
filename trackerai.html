@@ -5,14 +5,14 @@
     <title>Leaflet Story Walk</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
+      #map {
+        height: 50vh;
+        width: 100%;
+      }
       html,
       body {
         margin: 0;
         padding: 0;
-      }
-      #map {
-        height: 50vh;
-        width: 100%;
       }
       #popup {
         display: none;
@@ -41,9 +41,9 @@
     </style>
   </head>
   <body>
-    <div id="map"></div>
+    <div id="map">Map</div>
 
-    <div id="overlay"></div>
+    <div id="overlay">Overlay</div>
     <div id="popup">
       <p id="popup-message"></p>
       <button id="close-popup">Close</button>
@@ -140,7 +140,7 @@
       // }
 
       // Initialize map
-      const map = L.map("map").setView([0, 0], 17);
+      const map = L.map("map").setView([presetLocations[0].lat, presetLocations[0].lng], 20);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap contributors",
