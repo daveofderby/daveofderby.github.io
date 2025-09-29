@@ -2,169 +2,201 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Sequential Location Tracker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaflet Story Walk</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
-      .popup {
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+      #popup {
         display: none;
         position: fixed;
-        z-index: 999;
-        left: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border: 2px solid #333;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        max-width: 300px;
+        text-align: center;
+      }
+      #overlay {
+        display: none;
+        position: fixed;
         top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.6);
-      }
-
-      .popup-content {
-        background-color: #fff;
-        margin: 15% auto;
-        padding: 20px 30px;
-        border-radius: 10px;
-        width: 300px;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        position: relative;
-      }
-
-      .close-btn {
-        position: absolute;
-        right: 15px;
-        top: 10px;
-        font-size: 20px;
-        cursor: pointer;
-      }
-
-      .popup-content button {
-        margin-top: 15px;
-        padding: 10px 20px;
-        background-color: #28a745;
-        border: none;
-        color: white;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .popup-content button:hover {
-        background-color: #218838;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
       }
     </style>
   </head>
   <body>
-    <h2>🛰️ Sequential Location Tracking</h2>
-    <p>Location tracking will move through locations in order.</p>
+    <div id="map"></div>
 
-    <!-- Popup Modal -->
-    <div id="locationPopup" class="popup">
-      <div class="popup-content">
-        <span class="close-btn" onclick="closePopup()">&times;</span>
-        <p id="popupMessage">You've reached a location!</p>
-        <button id="nextLocationBtn">Next Location</button>
-      </div>
+    <div id="overlay"></div>
+    <div id="popup">
+      <p id="popup-message"></p>
+      <button id="close-popup">Close</button>
     </div>
 
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-      // Ordered list of locations
-      const targetLocations = [
-        { name: "Location A", latitude: 40.7128, longitude: -74.006 }, // NYC
-        { name: "Location B", latitude: 34.0522, longitude: -118.2437 }, // LA
-        { name: "Location C", latitude: 51.5074, longitude: -0.1278 }, // London
+      // ✅ Story locations
+      const presetLocations = [
+        { lat: 52.8902, lng: -1.502752, name: "Once upon a time there was a fox" },
+        { lat: 52.890486, lng: -1.502613, name: "Who was very fond of chilli" },
+        { lat: 52.89008, lng: -1.502809, name: "but if he couldn't eat chilli, he ate cats!" },
       ];
 
-      const MATCH_RADIUS_METERS = 100;
       let currentIndex = 0;
-      let monitoringEnabled = true;
+      let reached = false;
+      let routeLine = null;
 
-      function getDistanceInMeters(lat1, lon1, lat2, lon2) {
-        const R = 6371e3;
-        const φ1 = (lat1 * Math.PI) / 180;
-        const φ2 = (lat2 * Math.PI) / 180;
-        const Δφ = ((lat2 - lat1) * Math.PI) / 180;
-        const Δλ = ((lon2 - lon1) * Math.PI) / 180;
+      const R = 6371e3; // Earth radius in meters
 
-        const a =
-          Math.sin(Δφ / 2) ** 2 +
-          Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
+      function getDistance(lat1, lng1, lat2, lng2) {
+        const toRad = (x) => (x * Math.PI) / 180;
+        const φ1 = toRad(lat1);
+        const φ2 = toRad(lat2);
+        const Δφ = toRad(lat2 - lat1);
+        const Δλ = toRad(lng2 - lng1);
 
+        const a = Math.sin(Δφ / 2) ** 2 + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return R * c;
       }
 
       function showPopup(message) {
-        const popup = document.getElementById("locationPopup");
-        const popupMsg = document.getElementById("popupMessage");
-        popupMsg.textContent = message;
-        popup.style.display = "block";
+        document.getElementById("popup-message").textContent = message;
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("popup").style.display = "block";
       }
 
-      function closePopup() {
-        document.getElementById("locationPopup").style.display = "none";
+      function hidePopup() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("popup").style.display = "none";
       }
 
-      function checkCurrentLocation(currentLat, currentLng) {
-        if (!monitoringEnabled || currentIndex >= targetLocations.length)
-          return;
+      // Icons
+      const targetIcon = L.icon({
+        iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png", // pin
+        iconSize: [32, 32],
+      });
 
-        const location = targetLocations[currentIndex];
-        const distance = getDistanceInMeters(
-          currentLat,
-          currentLng,
-          location.latitude,
-          location.longitude
-        );
+      const tickIcon = L.icon({
+        iconUrl: "https://cdn-icons-png.flaticon.com/512/190/190411.png", // green check
+        iconSize: [32, 32],
+      });
 
-        console.log(
-          `Checking ${location.name}: ${distance.toFixed(2)} meters away`
-        );
+      let nextMarker;
 
-        if (distance <= MATCH_RADIUS_METERS) {
-          monitoringEnabled = false; // stop checking until user clicks "Next"
-          showPopup(`🎉 You've arrived at ${location.name}!`);
+      document.getElementById("close-popup").addEventListener("click", () => {
+        hidePopup();
+        reached = false;
+        currentIndex++;
+        if (currentIndex < presetLocations.length) {
+          // Add next target marker
+          nextMarker = L.marker([presetLocations[currentIndex].lat, presetLocations[currentIndex].lng], {
+            icon: targetIcon,
+          }).addTo(map);
+
+          // Draw route
+          if (routeLine) map.removeLayer(routeLine);
+          routeLine = L.polyline([userMarker.getLatLng(), nextMarker.getLatLng()], {
+            color: "blue",
+            weight: 3,
+            dashArray: "5, 10",
+          }).addTo(map);
+        } else {
+          if (routeLine) map.removeLayer(routeLine);
+          alert("🎉 The story is complete!");
         }
-      }
+      });
 
-      function startLocationMonitoring() {
-        if (!navigator.geolocation) {
-          alert("Geolocation is not supported by your browser.");
-          return;
-        }
+      // Initialize map
+      const map = L.map("map").setView([presetLocations[0].lat, presetLocations[0].lng], 19);
 
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      // ⚪ Add grey dots for all locations (no popup, just placeholders)
+      presetLocations.forEach((loc) => {
+        L.circleMarker([loc.lat, loc.lng], {
+          radius: 4,
+          color: "grey",
+          fillColor: "lightgrey",
+          fillOpacity: 0.6,
+        }).addTo(map);
+      });
+
+      // 🔵 Blue dot for current position
+      let userMarker = L.circleMarker([presetLocations[0].lat, presetLocations[0].lng], {
+        radius: 8,
+        fillColor: "#007bff",
+        color: "#fff",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.9,
+      }).addTo(map);
+
+      // 🎯 First target marker
+      nextMarker = L.marker([presetLocations[currentIndex].lat, presetLocations[currentIndex].lng], {
+        icon: targetIcon,
+      }).addTo(map);
+
+      // Initial route
+      routeLine = L.polyline([userMarker.getLatLng(), nextMarker.getLatLng()], {
+        color: "blue",
+        weight: 3,
+        dashArray: "5, 10",
+      }).addTo(map);
+
+      // 📍 Track user location
+      if (navigator.geolocation) {
         navigator.geolocation.watchPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-            console.log(`📍 Current: ${latitude}, ${longitude}`);
-            checkCurrentLocation(latitude, longitude);
+          (pos) => {
+            const { latitude, longitude } = pos.coords;
+
+            // Update blue dot
+            userMarker.setLatLng([latitude, longitude]);
+            map.panTo([latitude, longitude]);
+
+            // Update route dynamically
+            if (routeLine && nextMarker) {
+              routeLine.setLatLngs([userMarker.getLatLng(), nextMarker.getLatLng()]);
+            }
+
+            // Check distance to next location
+            if (currentIndex < presetLocations.length && !reached) {
+              const target = presetLocations[currentIndex];
+              const dist = getDistance(latitude, longitude, target.lat, target.lng);
+              if (dist <= 5) {
+                reached = true;
+                nextMarker.setIcon(tickIcon);
+
+                // Remove route
+                if (routeLine) {
+                  map.removeLayer(routeLine);
+                  routeLine = null;
+                }
+
+                // Show popup with story text
+                showPopup(target.name);
+              }
+            }
           },
-          (error) => {
-            console.error("Geolocation error:", error.message);
-            alert("Error getting location: " + error.message);
-          },
-          {
-            enableHighAccuracy: true,
-            maximumAge: 10000,
-            timeout: 5000,
-          }
+          (err) => console.error(err),
+          { enableHighAccuracy: true, maximumAge: 1000, timeout: 5000 }
         );
+      } else {
+        alert("Geolocation not supported.");
       }
-
-      document
-        .getElementById("nextLocationBtn")
-        .addEventListener("click", () => {
-          closePopup();
-          currentIndex++;
-
-          if (currentIndex >= targetLocations.length) {
-            showPopup("✅ You've completed all locations!");
-            document.getElementById("nextLocationBtn").style.display = "none";
-          } else {
-            monitoringEnabled = true; // resume monitoring
-          }
-        });
-
-      // Start on load
-      window.onload = startLocationMonitoring;
     </script>
   </body>
 </html>
