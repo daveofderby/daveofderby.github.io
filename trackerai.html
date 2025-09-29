@@ -53,7 +53,6 @@
     <script>
       // ✅ Story locations
       const presetLocations = [
-        { lat: 52.89008, lng: -1.502809, name: "The Blagreaves Fox" },
         { lat: 52.8902, lng: -1.502752, name: "Once upon a time there was a fox" },
         { lat: 52.890486, lng: -1.502613, name: "Who was very fond of chilli" },
         { lat: 52.89008, lng: -1.502809, name: "but if he couldn't eat chilli, he ate cats!" },
@@ -89,11 +88,6 @@
       }
 
       // Icons
-      const targetIcon = L.icon({
-        iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png", // pin
-        iconSize: [32, 32],
-      });
-
       const tickIcon = L.icon({
         iconUrl: "https://cdn-icons-png.flaticon.com/512/190/190411.png", // green check
         iconSize: [32, 32],
@@ -171,6 +165,12 @@
         iconSize: [30, 30],
         iconAnchor: [15, 25],
         zIndexOffset: 1000,
+      });
+
+      const targetIcon = L.icon({
+        iconUrl: "icon-page.png",
+        iconSize: [24, 30],
+        iconAnchor: [12, 25],
       });
 
       const userMarker = L.marker([presetLocations[0].lat, presetLocations[0].lng], { riseOnHover: true, opacity: 1, icon: userIcon }).addTo(map);
