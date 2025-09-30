@@ -57,9 +57,16 @@
     <script>
       // ✅ Story locations
       const presetLocations = [
-        { lat: 52.8902, lng: -1.502752, name: "Once upon a time there was a fox" },
-        { lat: 52.89038, lng: -1.50266, name: "Who was very fond of chilli" },
-        { lat: 52.890486, lng: -1.502613, name: "but if he couldn't eat chilli, he ate cats!" },
+        { name: "London", lat: 51.5074, lng: -0.1278 },
+        { name: "New York", lat: 40.7128, lng: -74.006 },
+        { name: "Los Angeles", lat: 34.0522, lng: -118.2437 },
+        { name: "Chicago", lat: 41.8781, lng: -87.6298 },
+        { name: "Houston", lat: 29.7604, lng: -95.3698 },
+        { name: "Paris", lat: 48.8566, lng: 2.3522 },
+        { name: "Tokyo", lat: 35.6895, lng: 139.6917 },
+        { name: "Sydney", lat: -33.8688, lng: 151.2093 },
+        { name: "Rio de Janeiro", lat: -22.9068, lng: -43.1729 },
+        { name: "Cairo", lat: 30.0444, lng: 31.2357 },
       ];
 
       let currentIndex = 0;
@@ -137,7 +144,7 @@
       });
 
       // Initialize map
-      const map = L.map("map").setView([presetLocations[0].lat, presetLocations[0].lng], 19);
+      const map = L.map("map").setView([presetLocations[0].lat, presetLocations[0].lng], 3);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap contributors",
