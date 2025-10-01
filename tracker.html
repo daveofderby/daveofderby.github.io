@@ -100,19 +100,19 @@
 
       // Icons
       const tickIcon = L.icon({
-        iconUrl: "https://cdn-icons-png.flaticon.com/512/190/190411.png", // green check
+        iconUrl: "img/green-tick.png",
         iconSize: [15, 15],
       });
 
       const userIcon = L.icon({
-        iconUrl: "icon-man.png",
+        iconUrl: "img\/icon-man.png",
         iconSize: [30, 30],
         iconAnchor: [15, 25],
         zIndexOffset: 1000,
       });
 
       const targetIcon = L.icon({
-        iconUrl: "icon-page.png",
+        iconUrl: "img/icon-page.png",
         iconSize: [24, 30],
         iconAnchor: [12, 25],
       });
@@ -144,7 +144,7 @@
       });
 
       // Initialize map
-      const map = L.map("map").setView([presetLocations[0].lat, presetLocations[0].lng], 3);
+      const map = L.map("map").setView([presetLocations[0].lat, presetLocations[0].lng], 7);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap contributors",
